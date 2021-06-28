@@ -1,0 +1,32 @@
+[2021-06-27 18:01:55,471] {taskinstance.py:876} INFO - Dependencies all met for <TaskInstance: postgretomysql.import_mongo_invoice 2021-06-27T18:01:27.549223+00:00 [queued]>
+[2021-06-27 18:01:55,492] {taskinstance.py:876} INFO - Dependencies all met for <TaskInstance: postgretomysql.import_mongo_invoice 2021-06-27T18:01:27.549223+00:00 [queued]>
+[2021-06-27 18:01:55,494] {taskinstance.py:1067} INFO - 
+--------------------------------------------------------------------------------
+[2021-06-27 18:01:55,495] {taskinstance.py:1068} INFO - Starting attempt 1 of 2
+[2021-06-27 18:01:55,499] {taskinstance.py:1069} INFO - 
+--------------------------------------------------------------------------------
+[2021-06-27 18:01:55,520] {taskinstance.py:1087} INFO - Executing <Task(PythonOperator): import_mongo_invoice> on 2021-06-27T18:01:27.549223+00:00
+[2021-06-27 18:01:55,532] {standard_task_runner.py:52} INFO - Started process 7087 to run task
+[2021-06-27 18:01:55,541] {standard_task_runner.py:76} INFO - Running: ['***', 'tasks', 'run', 'postgretomysql', 'import_mongo_invoice', '2021-06-27T18:01:27.549223+00:00', '--job-id', '91', '--pool', 'default_pool', '--raw', '--subdir', 'DAGS_FOLDER/postgresql-collect.py', '--cfg-path', '/tmp/tmp86wa0o0z', '--error-file', '/tmp/tmpg2tsv_hk']
+[2021-06-27 18:01:55,543] {standard_task_runner.py:77} INFO - Job 91: Subtask import_mongo_invoice
+[2021-06-27 18:01:55,626] {logging_mixin.py:104} INFO - Running <TaskInstance: postgretomysql.import_mongo_invoice 2021-06-27T18:01:27.549223+00:00 [running]> on host b69deda3a989
+[2021-06-27 18:01:55,753] {taskinstance.py:1282} INFO - Exporting the following env vars:
+AIRFLOW_CTX_DAG_EMAIL=tech@innospark.com
+AIRFLOW_CTX_DAG_OWNER=***
+AIRFLOW_CTX_DAG_ID=postgretomysql
+AIRFLOW_CTX_TASK_ID=import_mongo_invoice
+AIRFLOW_CTX_EXECUTION_DATE=2021-06-27T18:01:27.549223+00:00
+AIRFLOW_CTX_DAG_RUN_ID=manual__2021-06-27T18:01:27.549223+00:00
+[2021-06-27 18:01:55,755] {logging_mixin.py:104} INFO - Entering import_mongo_from_csv docker-mongo
+[2021-06-27 18:01:55,772] {base.py:78} INFO - Using connection to: id: docker-mongo. Host: 172.27.240.1, Port: 27017, Schema: test, Login: , Password: None, extra: {}
+[2021-06-27 18:01:55,776] {logging_mixin.py:104} INFO - the row OrderedDict([('id', '1'), ('idcustomer', '1'), ('orderdate', '1903-01-31'), ('subtotal', '1000000.0'), ('discount', '0.0'), ('region', 'Stockholm'), ('salesperson', 'Carl-\u200bHenrik Heldin,')])
+[2021-06-27 18:01:55,778] {logging_mixin.py:104} INFO - the row OrderedDict([('id', '2'), ('idcustomer', '2'), ('orderdate', '1954-01-31'), ('subtotal', '1000000.0'), ('discount', '0.0'), ('region', 'Stockholm'), ('salesperson', 'Göran K. Hansson')])
+[2021-06-27 18:01:55,778] {logging_mixin.py:104} INFO - the row OrderedDict([('id', '3'), ('idcustomer', '3'), ('orderdate', '1956-01-31'), ('subtotal', '1000000.0'), ('discount', '0.0'), ('region', 'Stockholm'), ('salesperson', 'Vidar Helgesen')])
+[2021-06-27 18:01:55,779] {logging_mixin.py:104} INFO - the row OrderedDict([('id', '4'), ('idcustomer', '4'), ('orderdate', '1958-01-31'), ('subtotal', '1000000.0'), ('discount', '0.0'), ('region', 'Stockholm'), ('salesperson', 'Mats Malm')])
+[2021-06-27 18:01:55,780] {logging_mixin.py:104} INFO - The data [{'id': '1', 'idcustomer': '1', 'orderdate': '1903-01-31', 'subtotal': '1000000.0', 'discount': '0.0', 'region': 'Stockholm', 'salesperson': 'Carl-\u200bHenrik Heldin,'}, {'id': '2', 'idcustomer': '2', 'orderdate': '1954-01-31', 'subtotal': '1000000.0', 'discount': '0.0', 'region': 'Stockholm', 'salesperson': 'Göran K. Hansson'}, {'id': '3', 'idcustomer': '3', 'orderdate': '1956-01-31', 'subtotal': '1000000.0', 'discount': '0.0', 'region': 'Stockholm', 'salesperson': 'Vidar Helgesen'}, {'id': '4', 'idcustomer': '4', 'orderdate': '1958-01-31', 'subtotal': '1000000.0', 'discount': '0.0', 'region': 'Stockholm', 'salesperson': 'Mats Malm'}]
+[2021-06-27 18:01:55,781] {logging_mixin.py:104} INFO - The data type <class 'list'>
+[2021-06-27 18:01:55,798] {logging_mixin.py:104} INFO - The conn MongoClient(host=['172.27.240.1:27017'], document_class=dict, tz_aware=False, connect=True)
+[2021-06-27 18:01:55,842] {python.py:151} INFO - Done. Returned value was: None
+[2021-06-27 18:01:55,860] {taskinstance.py:1191} INFO - Marking task as SUCCESS. dag_id=postgretomysql, task_id=import_mongo_invoice, execution_date=20210627T180127, start_date=20210627T180155, end_date=20210627T180155
+[2021-06-27 18:01:55,904] {taskinstance.py:1245} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2021-06-27 18:01:55,921] {local_task_job.py:151} INFO - Task exited with return code 0

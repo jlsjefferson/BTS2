@@ -1,0 +1,98 @@
+[2021-06-27 07:07:50,810] {taskinstance.py:876} INFO - Dependencies all met for <TaskInstance: postgretomysql.create_postgresql_schema 2021-06-25T00:00:00+00:00 [queued]>
+[2021-06-27 07:07:50,831] {taskinstance.py:876} INFO - Dependencies all met for <TaskInstance: postgretomysql.create_postgresql_schema 2021-06-25T00:00:00+00:00 [queued]>
+[2021-06-27 07:07:50,832] {taskinstance.py:1067} INFO - 
+--------------------------------------------------------------------------------
+[2021-06-27 07:07:50,833] {taskinstance.py:1068} INFO - Starting attempt 2 of 2
+[2021-06-27 07:07:50,836] {taskinstance.py:1069} INFO - 
+--------------------------------------------------------------------------------
+[2021-06-27 07:07:50,847] {taskinstance.py:1087} INFO - Executing <Task(PostgresOperator): create_postgresql_schema> on 2021-06-25T00:00:00+00:00
+[2021-06-27 07:07:50,856] {standard_task_runner.py:52} INFO - Started process 4672 to run task
+[2021-06-27 07:07:50,862] {standard_task_runner.py:76} INFO - Running: ['***', 'tasks', 'run', 'postgretomysql', 'create_postgresql_schema', '2021-06-25T00:00:00+00:00', '--job-id', '31', '--pool', 'default_pool', '--raw', '--subdir', 'DAGS_FOLDER/postgresql-collect.py', '--cfg-path', '/tmp/tmp7bk7ngob', '--error-file', '/tmp/tmp83qkck0y']
+[2021-06-27 07:07:50,863] {standard_task_runner.py:77} INFO - Job 31: Subtask create_postgresql_schema
+[2021-06-27 07:07:50,943] {logging_mixin.py:104} INFO - Running <TaskInstance: postgretomysql.create_postgresql_schema 2021-06-25T00:00:00+00:00 [running]> on host b69deda3a989
+[2021-06-27 07:07:51,032] {taskinstance.py:1282} INFO - Exporting the following env vars:
+AIRFLOW_CTX_DAG_EMAIL=tech@innospark.com
+AIRFLOW_CTX_DAG_OWNER=***
+AIRFLOW_CTX_DAG_ID=postgretomysql
+AIRFLOW_CTX_TASK_ID=create_postgresql_schema
+AIRFLOW_CTX_EXECUTION_DATE=2021-06-25T00:00:00+00:00
+AIRFLOW_CTX_DAG_RUN_ID=scheduled__2021-06-25T00:00:00+00:00
+[2021-06-27 07:07:51,033] {postgres.py:70} INFO - Executing: -- Drop tables
+
+DROP TABLE test.invoice;
+
+DROP TABLE test.customer;
+
+-- test.customer definition
+
+CREATE TABLE IF NOT EXISTS test.customer (
+	id int4 NOT NULL,
+	customername varchar NULL,
+	address varchar NULL,
+	country varchar NULL,
+	phone varchar NULL,
+	CONSTRAINT customer_pk PRIMARY KEY (id)
+);
+
+-- test.invoice definition
+
+CREATE TABLE IF NOT EXISTS test.invoice (
+	id int4 NOT NULL,
+	idcustomer int4 NULL,
+	orderdate date NULL,
+	subtotal float4 NULL,
+	discount float4 NULL,
+	region varchar NULL,
+	salesperson varchar NULL,
+	CONSTRAINT invoice_pk PRIMARY KEY (id),
+	CONSTRAINT customer_fk FOREIGN KEY (id) REFERENCES test.customer(id)
+);
+[2021-06-27 07:07:51,061] {base.py:78} INFO - Using connection to: id: docker-postgres. Host: 192.168.1.27, Port: 5432, Schema: , Login: postgres, Password: ***, extra: {}
+[2021-06-27 07:07:51,086] {dbapi.py:204} INFO - Running statement: -- Drop tables
+
+DROP TABLE test.invoice;
+
+DROP TABLE test.customer;
+
+-- test.customer definition
+
+CREATE TABLE IF NOT EXISTS test.customer (
+	id int4 NOT NULL,
+	customername varchar NULL,
+	address varchar NULL,
+	country varchar NULL,
+	phone varchar NULL,
+	CONSTRAINT customer_pk PRIMARY KEY (id)
+);
+
+-- test.invoice definition
+
+CREATE TABLE IF NOT EXISTS test.invoice (
+	id int4 NOT NULL,
+	idcustomer int4 NULL,
+	orderdate date NULL,
+	subtotal float4 NULL,
+	discount float4 NULL,
+	region varchar NULL,
+	salesperson varchar NULL,
+	CONSTRAINT invoice_pk PRIMARY KEY (id),
+	CONSTRAINT customer_fk FOREIGN KEY (id) REFERENCES test.customer(id)
+);, parameters: None
+[2021-06-27 07:07:51,092] {taskinstance.py:1481} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.6/site-packages/airflow/models/taskinstance.py", line 1137, in _run_raw_task
+    self._prepare_and_execute_task_with_callbacks(context, task)
+  File "/home/airflow/.local/lib/python3.6/site-packages/airflow/models/taskinstance.py", line 1311, in _prepare_and_execute_task_with_callbacks
+    result = self._execute_task(context, task_copy)
+  File "/home/airflow/.local/lib/python3.6/site-packages/airflow/models/taskinstance.py", line 1341, in _execute_task
+    result = task_copy.execute(context=context)
+  File "/home/airflow/.local/lib/python3.6/site-packages/airflow/providers/postgres/operators/postgres.py", line 72, in execute
+    self.hook.run(self.sql, self.autocommit, parameters=self.parameters)
+  File "/home/airflow/.local/lib/python3.6/site-packages/airflow/hooks/dbapi.py", line 184, in run
+    self._run_command(cur, sql_statement, parameters)
+  File "/home/airflow/.local/lib/python3.6/site-packages/airflow/hooks/dbapi.py", line 208, in _run_command
+    cur.execute(sql_statement)
+psycopg2.errors.InvalidSchemaName: schema "test" does not exist
+
+[2021-06-27 07:07:51,101] {taskinstance.py:1531} INFO - Marking task as FAILED. dag_id=postgretomysql, task_id=create_postgresql_schema, execution_date=20210625T000000, start_date=20210627T070750, end_date=20210627T070751
+[2021-06-27 07:07:51,194] {local_task_job.py:151} INFO - Task exited with return code 1

@@ -1,0 +1,41 @@
+[2021-06-27 06:17:22,655] {taskinstance.py:876} INFO - Dependencies all met for <TaskInstance: example_mysql.create_table_mysql 2021-06-26T00:00:00+00:00 [queued]>
+[2021-06-27 06:17:22,788] {taskinstance.py:876} INFO - Dependencies all met for <TaskInstance: example_mysql.create_table_mysql 2021-06-26T00:00:00+00:00 [queued]>
+[2021-06-27 06:17:22,793] {taskinstance.py:1067} INFO - 
+--------------------------------------------------------------------------------
+[2021-06-27 06:17:22,799] {taskinstance.py:1068} INFO - Starting attempt 1 of 1
+[2021-06-27 06:17:22,806] {taskinstance.py:1069} INFO - 
+--------------------------------------------------------------------------------
+[2021-06-27 06:17:22,866] {taskinstance.py:1087} INFO - Executing <Task(MySqlOperator): create_table_mysql> on 2021-06-26T00:00:00+00:00
+[2021-06-27 06:17:22,941] {standard_task_runner.py:52} INFO - Started process 2478 to run task
+[2021-06-27 06:17:22,980] {standard_task_runner.py:76} INFO - Running: ['***', 'tasks', 'run', 'example_mysql', 'create_table_mysql', '2021-06-26T00:00:00+00:00', '--job-id', '19', '--pool', 'default_pool', '--raw', '--subdir', 'DAGS_FOLDER/example_mysql.py', '--cfg-path', '/tmp/tmpgu4fkv9l', '--error-file', '/tmp/tmpll3whsid']
+[2021-06-27 06:17:22,990] {standard_task_runner.py:77} INFO - Job 19: Subtask create_table_mysql
+[2021-06-27 06:17:23,209] {logging_mixin.py:104} INFO - Running <TaskInstance: example_mysql.create_table_mysql 2021-06-26T00:00:00+00:00 [running]> on host b69deda3a989
+[2021-06-27 06:17:23,528] {taskinstance.py:1282} INFO - Exporting the following env vars:
+AIRFLOW_CTX_DAG_OWNER=***
+AIRFLOW_CTX_DAG_ID=example_mysql
+AIRFLOW_CTX_TASK_ID=create_table_mysql
+AIRFLOW_CTX_EXECUTION_DATE=2021-06-26T00:00:00+00:00
+AIRFLOW_CTX_DAG_RUN_ID=scheduled__2021-06-26T00:00:00+00:00
+[2021-06-27 06:17:23,534] {mysql.py:72} INFO - Executing: DROP TABLE Student;
+[2021-06-27 06:17:23,588] {base.py:78} INFO - Using connection to: id: docker-mysql. Host: 192.168.1.27, Port: 3306, Schema: , Login: mysql, Password: ***, extra: {}
+[2021-06-27 06:17:23,718] {taskinstance.py:1481} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.6/site-packages/airflow/models/taskinstance.py", line 1137, in _run_raw_task
+    self._prepare_and_execute_task_with_callbacks(context, task)
+  File "/home/airflow/.local/lib/python3.6/site-packages/airflow/models/taskinstance.py", line 1311, in _prepare_and_execute_task_with_callbacks
+    result = self._execute_task(context, task_copy)
+  File "/home/airflow/.local/lib/python3.6/site-packages/airflow/models/taskinstance.py", line 1341, in _execute_task
+    result = task_copy.execute(context=context)
+  File "/home/airflow/.local/lib/python3.6/site-packages/airflow/providers/mysql/operators/mysql.py", line 74, in execute
+    hook.run(self.sql, autocommit=self.autocommit, parameters=self.parameters)
+  File "/home/airflow/.local/lib/python3.6/site-packages/airflow/hooks/dbapi.py", line 177, in run
+    with closing(self.get_conn()) as conn:
+  File "/home/airflow/.local/lib/python3.6/site-packages/airflow/providers/mysql/hooks/mysql.py", line 168, in get_conn
+    return MySQLdb.connect(**conn_config)
+  File "/home/airflow/.local/lib/python3.6/site-packages/MySQLdb/__init__.py", line 130, in Connect
+    return Connection(*args, **kwargs)
+  File "/home/airflow/.local/lib/python3.6/site-packages/MySQLdb/connections.py", line 185, in __init__
+    super().__init__(*args, **kwargs2)
+MySQLdb._exceptions.OperationalError: (1045, "Access denied for user 'mysql'@'172.17.0.1' (using password: YES)")
+[2021-06-27 06:17:23,730] {taskinstance.py:1531} INFO - Marking task as FAILED. dag_id=example_mysql, task_id=create_table_mysql, execution_date=20210626T000000, start_date=20210627T061722, end_date=20210627T061723
+[2021-06-27 06:17:23,865] {local_task_job.py:151} INFO - Task exited with return code 1

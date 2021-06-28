@@ -1,0 +1,41 @@
+[2021-06-27 16:36:04,024] {taskinstance.py:876} INFO - Dependencies all met for <TaskInstance: example_mongo.import_mysql_customer 2021-06-27T16:35:56.967162+00:00 [queued]>
+[2021-06-27 16:36:04,075] {taskinstance.py:876} INFO - Dependencies all met for <TaskInstance: example_mongo.import_mysql_customer 2021-06-27T16:35:56.967162+00:00 [queued]>
+[2021-06-27 16:36:04,076] {taskinstance.py:1067} INFO - 
+--------------------------------------------------------------------------------
+[2021-06-27 16:36:04,078] {taskinstance.py:1068} INFO - Starting attempt 1 of 1
+[2021-06-27 16:36:04,089] {taskinstance.py:1069} INFO - 
+--------------------------------------------------------------------------------
+[2021-06-27 16:36:04,128] {taskinstance.py:1087} INFO - Executing <Task(PythonOperator): import_mysql_customer> on 2021-06-27T16:35:56.967162+00:00
+[2021-06-27 16:36:04,156] {standard_task_runner.py:52} INFO - Started process 2426 to run task
+[2021-06-27 16:36:04,191] {standard_task_runner.py:76} INFO - Running: ['***', 'tasks', 'run', 'example_mongo', 'import_mysql_customer', '2021-06-27T16:35:56.967162+00:00', '--job-id', '68', '--pool', 'default_pool', '--raw', '--subdir', 'DAGS_FOLDER/example_mongo.py', '--cfg-path', '/tmp/tmp4e78m_vj', '--error-file', '/tmp/tmp9x0pwipd']
+[2021-06-27 16:36:04,204] {standard_task_runner.py:77} INFO - Job 68: Subtask import_mysql_customer
+[2021-06-27 16:36:04,378] {logging_mixin.py:104} INFO - Running <TaskInstance: example_mongo.import_mysql_customer 2021-06-27T16:35:56.967162+00:00 [running]> on host b69deda3a989
+[2021-06-27 16:36:04,562] {taskinstance.py:1282} INFO - Exporting the following env vars:
+AIRFLOW_CTX_DAG_OWNER=***
+AIRFLOW_CTX_DAG_ID=example_mongo
+AIRFLOW_CTX_TASK_ID=import_mysql_customer
+AIRFLOW_CTX_EXECUTION_DATE=2021-06-27T16:35:56.967162+00:00
+AIRFLOW_CTX_DAG_RUN_ID=manual__2021-06-27T16:35:56.967162+00:00
+[2021-06-27 16:36:04,606] {taskinstance.py:1481} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.6/site-packages/airflow/models/taskinstance.py", line 1137, in _run_raw_task
+    self._prepare_and_execute_task_with_callbacks(context, task)
+  File "/home/airflow/.local/lib/python3.6/site-packages/airflow/models/taskinstance.py", line 1311, in _prepare_and_execute_task_with_callbacks
+    result = self._execute_task(context, task_copy)
+  File "/home/airflow/.local/lib/python3.6/site-packages/airflow/models/taskinstance.py", line 1341, in _execute_task
+    result = task_copy.execute(context=context)
+  File "/home/airflow/.local/lib/python3.6/site-packages/airflow/operators/python.py", line 150, in execute
+    return_value = self.execute_callable()
+  File "/home/airflow/.local/lib/python3.6/site-packages/airflow/operators/python.py", line 161, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+  File "/opt/airflow/dags/example_mongo.py", line 14, in mysql_bulk_load_mongo
+    conn = MongoHook(mysql_conn_id=kwargs['conn_id'])
+  File "/home/airflow/.local/lib/python3.6/site-packages/airflow/providers/mongo/hooks/mongo.py", line 57, in __init__
+    self.connection = self.get_connection(conn_id)
+  File "/home/airflow/.local/lib/python3.6/site-packages/airflow/hooks/base.py", line 67, in get_connection
+    conn = Connection.get_connection_from_secrets(conn_id)
+  File "/home/airflow/.local/lib/python3.6/site-packages/airflow/models/connection.py", line 379, in get_connection_from_secrets
+    raise AirflowNotFoundException(f"The conn_id `{conn_id}` isn't defined")
+airflow.exceptions.AirflowNotFoundException: The conn_id `mongo_default` isn't defined
+[2021-06-27 16:36:04,617] {taskinstance.py:1531} INFO - Marking task as FAILED. dag_id=example_mongo, task_id=import_mysql_customer, execution_date=20210627T163556, start_date=20210627T163604, end_date=20210627T163604
+[2021-06-27 16:36:04,714] {local_task_job.py:151} INFO - Task exited with return code 1

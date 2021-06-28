@@ -1,0 +1,24 @@
+[2021-06-27 18:25:30,643] {taskinstance.py:876} INFO - Dependencies all met for <TaskInstance: postgretomysql.load_transform_invoice 2021-06-25T00:00:00+00:00 [queued]>
+[2021-06-27 18:25:30,655] {taskinstance.py:876} INFO - Dependencies all met for <TaskInstance: postgretomysql.load_transform_invoice 2021-06-25T00:00:00+00:00 [queued]>
+[2021-06-27 18:25:30,656] {taskinstance.py:1067} INFO - 
+--------------------------------------------------------------------------------
+[2021-06-27 18:25:30,657] {taskinstance.py:1068} INFO - Starting attempt 1 of 2
+[2021-06-27 18:25:30,672] {taskinstance.py:1069} INFO - 
+--------------------------------------------------------------------------------
+[2021-06-27 18:25:30,692] {taskinstance.py:1087} INFO - Executing <Task(PythonOperator): load_transform_invoice> on 2021-06-25T00:00:00+00:00
+[2021-06-27 18:25:30,700] {standard_task_runner.py:52} INFO - Started process 8392 to run task
+[2021-06-27 18:25:30,709] {standard_task_runner.py:76} INFO - Running: ['***', 'tasks', 'run', 'postgretomysql', 'load_transform_invoice', '2021-06-25T00:00:00+00:00', '--job-id', '94', '--pool', 'default_pool', '--raw', '--subdir', 'DAGS_FOLDER/postgresmysql.py', '--cfg-path', '/tmp/tmpnko9qj1q', '--error-file', '/tmp/tmpakfs9hya']
+[2021-06-27 18:25:30,711] {standard_task_runner.py:77} INFO - Job 94: Subtask load_transform_invoice
+[2021-06-27 18:25:30,769] {logging_mixin.py:104} INFO - Running <TaskInstance: postgretomysql.load_transform_invoice 2021-06-25T00:00:00+00:00 [running]> on host b69deda3a989
+[2021-06-27 18:25:30,834] {taskinstance.py:1282} INFO - Exporting the following env vars:
+AIRFLOW_CTX_DAG_EMAIL=tech@innospark.com
+AIRFLOW_CTX_DAG_OWNER=***
+AIRFLOW_CTX_DAG_ID=postgretomysql
+AIRFLOW_CTX_TASK_ID=load_transform_invoice
+AIRFLOW_CTX_EXECUTION_DATE=2021-06-25T00:00:00+00:00
+AIRFLOW_CTX_DAG_RUN_ID=scheduled__2021-06-25T00:00:00+00:00
+[2021-06-27 18:25:30,847] {base.py:78} INFO - Using connection to: id: docker-postgres. Host: 172.27.240.1, Port: 5432, Schema: , Login: postgres, Password: ***, extra: {}
+[2021-06-27 18:25:30,878] {python.py:151} INFO - Done. Returned value was: None
+[2021-06-27 18:25:30,897] {taskinstance.py:1191} INFO - Marking task as SUCCESS. dag_id=postgretomysql, task_id=load_transform_invoice, execution_date=20210625T000000, start_date=20210627T182530, end_date=20210627T182530
+[2021-06-27 18:25:30,934] {taskinstance.py:1245} INFO - 1 downstream tasks scheduled from follow-on schedule check
+[2021-06-27 18:25:30,959] {local_task_job.py:151} INFO - Task exited with return code 0

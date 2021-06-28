@@ -1,0 +1,32 @@
+[2021-06-27 20:27:14,969] {taskinstance.py:876} INFO - Dependencies all met for <TaskInstance: mysqltomongo.import_mongo_customer 2021-06-27T20:25:51.782560+00:00 [queued]>
+[2021-06-27 20:27:15,001] {taskinstance.py:876} INFO - Dependencies all met for <TaskInstance: mysqltomongo.import_mongo_customer 2021-06-27T20:25:51.782560+00:00 [queued]>
+[2021-06-27 20:27:15,002] {taskinstance.py:1067} INFO - 
+--------------------------------------------------------------------------------
+[2021-06-27 20:27:15,003] {taskinstance.py:1068} INFO - Starting attempt 1 of 2
+[2021-06-27 20:27:15,007] {taskinstance.py:1069} INFO - 
+--------------------------------------------------------------------------------
+[2021-06-27 20:27:15,037] {taskinstance.py:1087} INFO - Executing <Task(PythonOperator): import_mongo_customer> on 2021-06-27T20:25:51.782560+00:00
+[2021-06-27 20:27:15,055] {standard_task_runner.py:52} INFO - Started process 2931 to run task
+[2021-06-27 20:27:15,064] {standard_task_runner.py:76} INFO - Running: ['***', 'tasks', 'run', 'mysqltomongo', 'import_mongo_customer', '2021-06-27T20:25:51.782560+00:00', '--job-id', '125', '--pool', 'default_pool', '--raw', '--subdir', 'DAGS_FOLDER/mysqlmongo.py', '--cfg-path', '/tmp/tmp77d52abl', '--error-file', '/tmp/tmpcarfnae5']
+[2021-06-27 20:27:15,068] {standard_task_runner.py:77} INFO - Job 125: Subtask import_mongo_customer
+[2021-06-27 20:27:15,142] {logging_mixin.py:104} INFO - Running <TaskInstance: mysqltomongo.import_mongo_customer 2021-06-27T20:25:51.782560+00:00 [running]> on host b69deda3a989
+[2021-06-27 20:27:15,270] {taskinstance.py:1282} INFO - Exporting the following env vars:
+AIRFLOW_CTX_DAG_EMAIL=tech@innospark.com
+AIRFLOW_CTX_DAG_OWNER=***
+AIRFLOW_CTX_DAG_ID=mysqltomongo
+AIRFLOW_CTX_TASK_ID=import_mongo_customer
+AIRFLOW_CTX_EXECUTION_DATE=2021-06-27T20:25:51.782560+00:00
+AIRFLOW_CTX_DAG_RUN_ID=manual__2021-06-27T20:25:51.782560+00:00
+[2021-06-27 20:27:15,272] {logging_mixin.py:104} INFO - Entering import_mongo_from_csv docker-mongo
+[2021-06-27 20:27:15,287] {base.py:78} INFO - Using connection to: id: docker-mongo. Host: 172.27.240.1, Port: 27017, Schema: test, Login: , Password: None, extra: {}
+[2021-06-27 20:27:15,290] {logging_mixin.py:104} INFO - the row OrderedDict([('id', '1'), ('firstname', 'Roberto'), ('lastname', 'Arenal'), ('address', '4 Place Jussieu, 75005 Paris, France'), ('phone', '+33144274427')])
+[2021-06-27 20:27:15,291] {logging_mixin.py:104} INFO - the row OrderedDict([('id', '2'), ('firstname', 'Donald'), ('lastname', 'Trump'), ('address', 'Wellcome Trust Genome Campus, Hinxton, Saffron Walden CB10 1RQ'), ('phone', '+441223834244')])
+[2021-06-27 20:27:15,292] {logging_mixin.py:104} INFO - the row OrderedDict([('id', '3'), ('firstname', 'Josh'), ('lastname', 'Jacobs'), ('address', 'Urbana, IL 61801'), ('phone', '+12173332151')])
+[2021-06-27 20:27:15,294] {logging_mixin.py:104} INFO - the row OrderedDict([('id', '4'), ('firstname', 'Daniel'), ('lastname', 'Freeman'), ('address', 'Pla de Palau, 10'), ('phone', '+15417375075')])
+[2021-06-27 20:27:15,295] {logging_mixin.py:104} INFO - The data [{'id': '1', 'firstname': 'Roberto', 'lastname': 'Arenal', 'address': '4 Place Jussieu, 75005 Paris, France', 'phone': '+33144274427'}, {'id': '2', 'firstname': 'Donald', 'lastname': 'Trump', 'address': 'Wellcome Trust Genome Campus, Hinxton, Saffron Walden CB10 1RQ', 'phone': '+441223834244'}, {'id': '3', 'firstname': 'Josh', 'lastname': 'Jacobs', 'address': 'Urbana, IL 61801', 'phone': '+12173332151'}, {'id': '4', 'firstname': 'Daniel', 'lastname': 'Freeman', 'address': 'Pla de Palau, 10', 'phone': '+15417375075'}]
+[2021-06-27 20:27:15,296] {logging_mixin.py:104} INFO - The data type <class 'list'>
+[2021-06-27 20:27:15,326] {logging_mixin.py:104} INFO - The conn MongoClient(host=['172.27.240.1:27017'], document_class=dict, tz_aware=False, connect=True)
+[2021-06-27 20:27:15,377] {python.py:151} INFO - Done. Returned value was: None
+[2021-06-27 20:27:15,397] {taskinstance.py:1191} INFO - Marking task as SUCCESS. dag_id=mysqltomongo, task_id=import_mongo_customer, execution_date=20210627T202551, start_date=20210627T202714, end_date=20210627T202715
+[2021-06-27 20:27:15,447] {taskinstance.py:1245} INFO - 1 downstream tasks scheduled from follow-on schedule check
+[2021-06-27 20:27:15,495] {local_task_job.py:151} INFO - Task exited with return code 0

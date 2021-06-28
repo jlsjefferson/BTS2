@@ -1,0 +1,40 @@
+[2021-06-11 18:23:29,003] {taskinstance.py:876} INFO - Dependencies all met for <TaskInstance: postgres_operator_dag.create_pet_table 2021-06-11T18:23:27.772431+00:00 [queued]>
+[2021-06-11 18:23:29,048] {taskinstance.py:876} INFO - Dependencies all met for <TaskInstance: postgres_operator_dag.create_pet_table 2021-06-11T18:23:27.772431+00:00 [queued]>
+[2021-06-11 18:23:29,049] {taskinstance.py:1067} INFO - 
+--------------------------------------------------------------------------------
+[2021-06-11 18:23:29,050] {taskinstance.py:1068} INFO - Starting attempt 1 of 1
+[2021-06-11 18:23:29,054] {taskinstance.py:1069} INFO - 
+--------------------------------------------------------------------------------
+[2021-06-11 18:23:29,072] {taskinstance.py:1087} INFO - Executing <Task(PostgresOperator): create_pet_table> on 2021-06-11T18:23:27.772431+00:00
+[2021-06-11 18:23:29,081] {standard_task_runner.py:52} INFO - Started process 4571 to run task
+[2021-06-11 18:23:29,105] {standard_task_runner.py:76} INFO - Running: ['***', 'tasks', 'run', 'postgres_operator_dag', 'create_pet_table', '2021-06-11T18:23:27.772431+00:00', '--job-id', '9', '--pool', 'default_pool', '--raw', '--subdir', 'DAGS_FOLDER/example_postgres.py', '--cfg-path', '/tmp/tmpsr92k3e9', '--error-file', '/tmp/tmpxlwojtmh']
+[2021-06-11 18:23:29,108] {standard_task_runner.py:77} INFO - Job 9: Subtask create_pet_table
+[2021-06-11 18:23:29,251] {logging_mixin.py:104} INFO - Running <TaskInstance: postgres_operator_dag.create_pet_table 2021-06-11T18:23:27.772431+00:00 [running]> on host cd242b243f35
+[2021-06-11 18:23:29,421] {taskinstance.py:1282} INFO - Exporting the following env vars:
+AIRFLOW_CTX_DAG_OWNER=***
+AIRFLOW_CTX_DAG_ID=postgres_operator_dag
+AIRFLOW_CTX_TASK_ID=create_pet_table
+AIRFLOW_CTX_EXECUTION_DATE=2021-06-11T18:23:27.772431+00:00
+AIRFLOW_CTX_DAG_RUN_ID=manual__2021-06-11T18:23:27.772431+00:00
+[2021-06-11 18:23:29,422] {postgres.py:70} INFO - Executing: 
+            CREATE TABLE IF NOT EXISTS pet (
+            pet_id SERIAL PRIMARY KEY,
+            name VARCHAR NOT NULL,
+            pet_type VARCHAR NOT NULL,
+            birth_date DATE NOT NULL,
+            OWNER VARCHAR NOT NULL);
+          
+[2021-06-11 18:23:29,451] {base.py:78} INFO - Using connection to: id: docker-postgres. Host: 192.168.1.27, Port: 5432, Schema: , Login: postgres, Password: ***, extra: {}
+[2021-06-11 18:23:29,494] {dbapi.py:204} INFO - Running statement: 
+            CREATE TABLE IF NOT EXISTS pet (
+            pet_id SERIAL PRIMARY KEY,
+            name VARCHAR NOT NULL,
+            pet_type VARCHAR NOT NULL,
+            birth_date DATE NOT NULL,
+            OWNER VARCHAR NOT NULL);
+          , parameters: None
+[2021-06-11 18:23:29,505] {postgres.py:74} INFO - NOTICE:  relation "pet" already exists, skipping
+
+[2021-06-11 18:23:29,535] {taskinstance.py:1191} INFO - Marking task as SUCCESS. dag_id=postgres_operator_dag, task_id=create_pet_table, execution_date=20210611T182327, start_date=20210611T182329, end_date=20210611T182329
+[2021-06-11 18:23:29,649] {taskinstance.py:1245} INFO - 1 downstream tasks scheduled from follow-on schedule check
+[2021-06-11 18:23:29,728] {local_task_job.py:151} INFO - Task exited with return code 0

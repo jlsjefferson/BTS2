@@ -1,0 +1,26 @@
+[2021-06-27 18:25:31,804] {taskinstance.py:876} INFO - Dependencies all met for <TaskInstance: postgretomysql.export_postgresql_customer 2021-06-25T00:00:00+00:00 [queued]>
+[2021-06-27 18:25:31,815] {taskinstance.py:876} INFO - Dependencies all met for <TaskInstance: postgretomysql.export_postgresql_customer 2021-06-25T00:00:00+00:00 [queued]>
+[2021-06-27 18:25:31,816] {taskinstance.py:1067} INFO - 
+--------------------------------------------------------------------------------
+[2021-06-27 18:25:31,816] {taskinstance.py:1068} INFO - Starting attempt 1 of 2
+[2021-06-27 18:25:31,818] {taskinstance.py:1069} INFO - 
+--------------------------------------------------------------------------------
+[2021-06-27 18:25:31,833] {taskinstance.py:1087} INFO - Executing <Task(PythonOperator): export_postgresql_customer> on 2021-06-25T00:00:00+00:00
+[2021-06-27 18:25:31,839] {standard_task_runner.py:52} INFO - Started process 8394 to run task
+[2021-06-27 18:25:31,844] {standard_task_runner.py:76} INFO - Running: ['***', 'tasks', 'run', 'postgretomysql', 'export_postgresql_customer', '2021-06-25T00:00:00+00:00', '--job-id', '95', '--pool', 'default_pool', '--raw', '--subdir', 'DAGS_FOLDER/postgresmysql.py', '--cfg-path', '/tmp/tmpr5vvr9x_', '--error-file', '/tmp/tmpi0qbzaco']
+[2021-06-27 18:25:31,845] {standard_task_runner.py:77} INFO - Job 95: Subtask export_postgresql_customer
+[2021-06-27 18:25:31,894] {logging_mixin.py:104} INFO - Running <TaskInstance: postgretomysql.export_postgresql_customer 2021-06-25T00:00:00+00:00 [running]> on host b69deda3a989
+[2021-06-27 18:25:31,951] {taskinstance.py:1282} INFO - Exporting the following env vars:
+AIRFLOW_CTX_DAG_EMAIL=tech@innospark.com
+AIRFLOW_CTX_DAG_OWNER=***
+AIRFLOW_CTX_DAG_ID=postgretomysql
+AIRFLOW_CTX_TASK_ID=export_postgresql_customer
+AIRFLOW_CTX_EXECUTION_DATE=2021-06-25T00:00:00+00:00
+AIRFLOW_CTX_DAG_RUN_ID=scheduled__2021-06-25T00:00:00+00:00
+[2021-06-27 18:25:31,953] {logging_mixin.py:104} INFO - Entering export_postgresql_to_csv SELECT * FROM test.customer
+[2021-06-27 18:25:31,963] {base.py:78} INFO - Using connection to: id: docker-postgres. Host: 172.27.240.1, Port: 5432, Schema: , Login: postgres, Password: ***, extra: {}
+[2021-06-27 18:25:33,867] {base.py:78} INFO - Using connection to: id: docker-postgres. Host: 172.27.240.1, Port: 5432, Schema: , Login: postgres, Password: ***, extra: {}
+[2021-06-27 18:25:33,891] {python.py:151} INFO - Done. Returned value was: None
+[2021-06-27 18:25:33,904] {taskinstance.py:1191} INFO - Marking task as SUCCESS. dag_id=postgretomysql, task_id=export_postgresql_customer, execution_date=20210625T000000, start_date=20210627T182531, end_date=20210627T182533
+[2021-06-27 18:25:33,935] {taskinstance.py:1245} INFO - 1 downstream tasks scheduled from follow-on schedule check
+[2021-06-27 18:25:33,985] {local_task_job.py:151} INFO - Task exited with return code 0

@@ -1,0 +1,26 @@
+[2021-06-27 18:01:41,663] {taskinstance.py:876} INFO - Dependencies all met for <TaskInstance: postgretomysql.export_postgresql_invoice 2021-06-27T18:01:27.549223+00:00 [queued]>
+[2021-06-27 18:01:41,680] {taskinstance.py:876} INFO - Dependencies all met for <TaskInstance: postgretomysql.export_postgresql_invoice 2021-06-27T18:01:27.549223+00:00 [queued]>
+[2021-06-27 18:01:41,681] {taskinstance.py:1067} INFO - 
+--------------------------------------------------------------------------------
+[2021-06-27 18:01:41,682] {taskinstance.py:1068} INFO - Starting attempt 1 of 2
+[2021-06-27 18:01:41,692] {taskinstance.py:1069} INFO - 
+--------------------------------------------------------------------------------
+[2021-06-27 18:01:41,715] {taskinstance.py:1087} INFO - Executing <Task(PythonOperator): export_postgresql_invoice> on 2021-06-27T18:01:27.549223+00:00
+[2021-06-27 18:01:41,724] {standard_task_runner.py:52} INFO - Started process 7058 to run task
+[2021-06-27 18:01:41,733] {standard_task_runner.py:76} INFO - Running: ['***', 'tasks', 'run', 'postgretomysql', 'export_postgresql_invoice', '2021-06-27T18:01:27.549223+00:00', '--job-id', '84', '--pool', 'default_pool', '--raw', '--subdir', 'DAGS_FOLDER/postgresql-collect.py', '--cfg-path', '/tmp/tmp62stx0c0', '--error-file', '/tmp/tmpdgtcwbp8']
+[2021-06-27 18:01:41,734] {standard_task_runner.py:77} INFO - Job 84: Subtask export_postgresql_invoice
+[2021-06-27 18:01:41,798] {logging_mixin.py:104} INFO - Running <TaskInstance: postgretomysql.export_postgresql_invoice 2021-06-27T18:01:27.549223+00:00 [running]> on host b69deda3a989
+[2021-06-27 18:01:41,878] {taskinstance.py:1282} INFO - Exporting the following env vars:
+AIRFLOW_CTX_DAG_EMAIL=tech@innospark.com
+AIRFLOW_CTX_DAG_OWNER=***
+AIRFLOW_CTX_DAG_ID=postgretomysql
+AIRFLOW_CTX_TASK_ID=export_postgresql_invoice
+AIRFLOW_CTX_EXECUTION_DATE=2021-06-27T18:01:27.549223+00:00
+AIRFLOW_CTX_DAG_RUN_ID=manual__2021-06-27T18:01:27.549223+00:00
+[2021-06-27 18:01:41,879] {logging_mixin.py:104} INFO - Entering export_postgresql_to_csv SELECT * FROM test.invoice
+[2021-06-27 18:01:41,893] {base.py:78} INFO - Using connection to: id: docker-postgres. Host: 172.27.240.1, Port: 5432, Schema: , Login: postgres, Password: ***, extra: {}
+[2021-06-27 18:01:44,360] {base.py:78} INFO - Using connection to: id: docker-postgres. Host: 172.27.240.1, Port: 5432, Schema: , Login: postgres, Password: ***, extra: {}
+[2021-06-27 18:01:44,385] {python.py:151} INFO - Done. Returned value was: None
+[2021-06-27 18:01:44,418] {taskinstance.py:1191} INFO - Marking task as SUCCESS. dag_id=postgretomysql, task_id=export_postgresql_invoice, execution_date=20210627T180127, start_date=20210627T180141, end_date=20210627T180144
+[2021-06-27 18:01:44,463] {taskinstance.py:1245} INFO - 1 downstream tasks scheduled from follow-on schedule check
+[2021-06-27 18:01:44,540] {local_task_job.py:151} INFO - Task exited with return code 0

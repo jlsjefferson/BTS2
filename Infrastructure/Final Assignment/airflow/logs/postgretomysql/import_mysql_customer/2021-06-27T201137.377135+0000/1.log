@@ -1,0 +1,24 @@
+[2021-06-27 20:13:01,056] {taskinstance.py:876} INFO - Dependencies all met for <TaskInstance: postgretomysql.import_mysql_customer 2021-06-27T20:11:37.377135+00:00 [queued]>
+[2021-06-27 20:13:01,089] {taskinstance.py:876} INFO - Dependencies all met for <TaskInstance: postgretomysql.import_mysql_customer 2021-06-27T20:11:37.377135+00:00 [queued]>
+[2021-06-27 20:13:01,090] {taskinstance.py:1067} INFO - 
+--------------------------------------------------------------------------------
+[2021-06-27 20:13:01,090] {taskinstance.py:1068} INFO - Starting attempt 1 of 2
+[2021-06-27 20:13:01,094] {taskinstance.py:1069} INFO - 
+--------------------------------------------------------------------------------
+[2021-06-27 20:13:01,136] {taskinstance.py:1087} INFO - Executing <Task(PythonOperator): import_mysql_customer> on 2021-06-27T20:11:37.377135+00:00
+[2021-06-27 20:13:01,158] {standard_task_runner.py:52} INFO - Started process 2233 to run task
+[2021-06-27 20:13:01,178] {standard_task_runner.py:76} INFO - Running: ['***', 'tasks', 'run', 'postgretomysql', 'import_mysql_customer', '2021-06-27T20:11:37.377135+00:00', '--job-id', '118', '--pool', 'default_pool', '--raw', '--subdir', 'DAGS_FOLDER/postgresmysql.py', '--cfg-path', '/tmp/tmpixtbij7y', '--error-file', '/tmp/tmphc08i627']
+[2021-06-27 20:13:01,180] {standard_task_runner.py:77} INFO - Job 118: Subtask import_mysql_customer
+[2021-06-27 20:13:01,310] {logging_mixin.py:104} INFO - Running <TaskInstance: postgretomysql.import_mysql_customer 2021-06-27T20:11:37.377135+00:00 [running]> on host b69deda3a989
+[2021-06-27 20:13:01,511] {taskinstance.py:1282} INFO - Exporting the following env vars:
+AIRFLOW_CTX_DAG_EMAIL=tech@innospark.com
+AIRFLOW_CTX_DAG_OWNER=***
+AIRFLOW_CTX_DAG_ID=postgretomysql
+AIRFLOW_CTX_TASK_ID=import_mysql_customer
+AIRFLOW_CTX_EXECUTION_DATE=2021-06-27T20:11:37.377135+00:00
+AIRFLOW_CTX_DAG_RUN_ID=manual__2021-06-27T20:11:37.377135+00:00
+[2021-06-27 20:13:01,582] {base.py:78} INFO - Using connection to: id: docker-mysql. Host: 172.27.240.1, Port: 3306, Schema: , Login: root, Password: ***, extra: {'charset': 'utf8', 'local_infile': True}
+[2021-06-27 20:13:01,713] {python.py:151} INFO - Done. Returned value was: None
+[2021-06-27 20:13:01,746] {taskinstance.py:1191} INFO - Marking task as SUCCESS. dag_id=postgretomysql, task_id=import_mysql_customer, execution_date=20210627T201137, start_date=20210627T201301, end_date=20210627T201301
+[2021-06-27 20:13:01,813] {taskinstance.py:1245} INFO - 1 downstream tasks scheduled from follow-on schedule check
+[2021-06-27 20:13:01,832] {local_task_job.py:151} INFO - Task exited with return code 0

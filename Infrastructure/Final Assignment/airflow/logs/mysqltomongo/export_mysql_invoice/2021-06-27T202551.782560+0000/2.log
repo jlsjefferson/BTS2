@@ -1,0 +1,25 @@
+[2021-06-27 20:27:13,429] {taskinstance.py:876} INFO - Dependencies all met for <TaskInstance: mysqltomongo.export_mysql_invoice 2021-06-27T20:25:51.782560+00:00 [queued]>
+[2021-06-27 20:27:13,461] {taskinstance.py:876} INFO - Dependencies all met for <TaskInstance: mysqltomongo.export_mysql_invoice 2021-06-27T20:25:51.782560+00:00 [queued]>
+[2021-06-27 20:27:13,462] {taskinstance.py:1067} INFO - 
+--------------------------------------------------------------------------------
+[2021-06-27 20:27:13,464] {taskinstance.py:1068} INFO - Starting attempt 2 of 2
+[2021-06-27 20:27:13,468] {taskinstance.py:1069} INFO - 
+--------------------------------------------------------------------------------
+[2021-06-27 20:27:13,492] {taskinstance.py:1087} INFO - Executing <Task(PythonOperator): export_mysql_invoice> on 2021-06-27T20:25:51.782560+00:00
+[2021-06-27 20:27:13,512] {standard_task_runner.py:52} INFO - Started process 2929 to run task
+[2021-06-27 20:27:13,523] {standard_task_runner.py:76} INFO - Running: ['***', 'tasks', 'run', 'mysqltomongo', 'export_mysql_invoice', '2021-06-27T20:25:51.782560+00:00', '--job-id', '124', '--pool', 'default_pool', '--raw', '--subdir', 'DAGS_FOLDER/mysqlmongo.py', '--cfg-path', '/tmp/tmpo6kr9_et', '--error-file', '/tmp/tmpkcd9w3qd']
+[2021-06-27 20:27:13,524] {standard_task_runner.py:77} INFO - Job 124: Subtask export_mysql_invoice
+[2021-06-27 20:27:13,602] {logging_mixin.py:104} INFO - Running <TaskInstance: mysqltomongo.export_mysql_invoice 2021-06-27T20:25:51.782560+00:00 [running]> on host b69deda3a989
+[2021-06-27 20:27:13,686] {taskinstance.py:1282} INFO - Exporting the following env vars:
+AIRFLOW_CTX_DAG_EMAIL=tech@innospark.com
+AIRFLOW_CTX_DAG_OWNER=***
+AIRFLOW_CTX_DAG_ID=mysqltomongo
+AIRFLOW_CTX_TASK_ID=export_mysql_invoice
+AIRFLOW_CTX_EXECUTION_DATE=2021-06-27T20:25:51.782560+00:00
+AIRFLOW_CTX_DAG_RUN_ID=manual__2021-06-27T20:25:51.782560+00:00
+[2021-06-27 20:27:13,688] {logging_mixin.py:104} INFO - Entering export_mysql_to_csv docker-mysql
+[2021-06-27 20:27:13,715] {base.py:78} INFO - Using connection to: id: docker-mysql. Host: 172.27.240.1, Port: 3306, Schema: , Login: root, Password: ***, extra: {'charset': 'utf8', 'local_infile': True}
+[2021-06-27 20:27:13,762] {python.py:151} INFO - Done. Returned value was: None
+[2021-06-27 20:27:13,784] {taskinstance.py:1191} INFO - Marking task as SUCCESS. dag_id=mysqltomongo, task_id=export_mysql_invoice, execution_date=20210627T202551, start_date=20210627T202713, end_date=20210627T202713
+[2021-06-27 20:27:13,832] {taskinstance.py:1245} INFO - 1 downstream tasks scheduled from follow-on schedule check
+[2021-06-27 20:27:13,855] {local_task_job.py:151} INFO - Task exited with return code 0

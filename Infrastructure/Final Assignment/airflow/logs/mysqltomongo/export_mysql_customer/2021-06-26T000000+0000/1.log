@@ -1,0 +1,44 @@
+[2021-06-27 20:05:13,979] {taskinstance.py:876} INFO - Dependencies all met for <TaskInstance: mysqltomongo.export_mysql_customer 2021-06-26T00:00:00+00:00 [queued]>
+[2021-06-27 20:05:14,006] {taskinstance.py:876} INFO - Dependencies all met for <TaskInstance: mysqltomongo.export_mysql_customer 2021-06-26T00:00:00+00:00 [queued]>
+[2021-06-27 20:05:14,007] {taskinstance.py:1067} INFO - 
+--------------------------------------------------------------------------------
+[2021-06-27 20:05:14,008] {taskinstance.py:1068} INFO - Starting attempt 1 of 2
+[2021-06-27 20:05:14,014] {taskinstance.py:1069} INFO - 
+--------------------------------------------------------------------------------
+[2021-06-27 20:05:14,048] {taskinstance.py:1087} INFO - Executing <Task(PythonOperator): export_mysql_customer> on 2021-06-26T00:00:00+00:00
+[2021-06-27 20:05:14,059] {standard_task_runner.py:52} INFO - Started process 1850 to run task
+[2021-06-27 20:05:14,071] {standard_task_runner.py:76} INFO - Running: ['***', 'tasks', 'run', 'mysqltomongo', 'export_mysql_customer', '2021-06-26T00:00:00+00:00', '--job-id', '104', '--pool', 'default_pool', '--raw', '--subdir', 'DAGS_FOLDER/mysqlmongo.py', '--cfg-path', '/tmp/tmpnprvnp4o', '--error-file', '/tmp/tmp6k48lg3_']
+[2021-06-27 20:05:14,073] {standard_task_runner.py:77} INFO - Job 104: Subtask export_mysql_customer
+[2021-06-27 20:05:14,156] {logging_mixin.py:104} INFO - Running <TaskInstance: mysqltomongo.export_mysql_customer 2021-06-26T00:00:00+00:00 [running]> on host b69deda3a989
+[2021-06-27 20:05:14,258] {taskinstance.py:1282} INFO - Exporting the following env vars:
+AIRFLOW_CTX_DAG_EMAIL=tech@innospark.com
+AIRFLOW_CTX_DAG_OWNER=***
+AIRFLOW_CTX_DAG_ID=mysqltomongo
+AIRFLOW_CTX_TASK_ID=export_mysql_customer
+AIRFLOW_CTX_EXECUTION_DATE=2021-06-26T00:00:00+00:00
+AIRFLOW_CTX_DAG_RUN_ID=scheduled__2021-06-26T00:00:00+00:00
+[2021-06-27 20:05:14,261] {logging_mixin.py:104} INFO - Entering export_mysql_to_csv docker-mysql
+[2021-06-27 20:05:14,292] {base.py:78} INFO - Using connection to: id: docker-mysql. Host: 172.27.240.1, Port: 3306, Schema: , Login: root, Password: ***, extra: {'charset': 'utf8', 'local_infile': True}
+[2021-06-27 20:05:14,364] {taskinstance.py:1481} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.6/site-packages/airflow/models/taskinstance.py", line 1137, in _run_raw_task
+    self._prepare_and_execute_task_with_callbacks(context, task)
+  File "/home/airflow/.local/lib/python3.6/site-packages/airflow/models/taskinstance.py", line 1311, in _prepare_and_execute_task_with_callbacks
+    result = self._execute_task(context, task_copy)
+  File "/home/airflow/.local/lib/python3.6/site-packages/airflow/models/taskinstance.py", line 1341, in _execute_task
+    result = task_copy.execute(context=context)
+  File "/home/airflow/.local/lib/python3.6/site-packages/airflow/operators/python.py", line 150, in execute
+    return_value = self.execute_callable()
+  File "/home/airflow/.local/lib/python3.6/site-packages/airflow/operators/python.py", line 161, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+  File "/opt/airflow/dags/mysqlmongo.py", line 31, in export_mysql_to_csv
+    cursor.execute(kwargs['copy_sql'])
+  File "/home/airflow/.local/lib/python3.6/site-packages/MySQLdb/cursors.py", line 206, in execute
+    res = self._query(query)
+  File "/home/airflow/.local/lib/python3.6/site-packages/MySQLdb/cursors.py", line 319, in _query
+    db.query(q)
+  File "/home/airflow/.local/lib/python3.6/site-packages/MySQLdb/connections.py", line 259, in query
+    _mysql.connection.query(self, query)
+MySQLdb._exceptions.ProgrammingError: (1146, "Table 'test.customer' doesn't exist")
+[2021-06-27 20:05:14,371] {taskinstance.py:1531} INFO - Marking task as UP_FOR_RETRY. dag_id=mysqltomongo, task_id=export_mysql_customer, execution_date=20210626T000000, start_date=20210627T200513, end_date=20210627T200514
+[2021-06-27 20:05:14,441] {local_task_job.py:151} INFO - Task exited with return code 1

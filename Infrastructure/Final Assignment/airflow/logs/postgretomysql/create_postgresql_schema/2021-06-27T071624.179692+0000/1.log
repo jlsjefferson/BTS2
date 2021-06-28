@@ -1,0 +1,87 @@
+[2021-06-27 07:16:25,411] {taskinstance.py:876} INFO - Dependencies all met for <TaskInstance: postgretomysql.create_postgresql_schema 2021-06-27T07:16:24.179692+00:00 [queued]>
+[2021-06-27 07:16:25,454] {taskinstance.py:876} INFO - Dependencies all met for <TaskInstance: postgretomysql.create_postgresql_schema 2021-06-27T07:16:24.179692+00:00 [queued]>
+[2021-06-27 07:16:25,455] {taskinstance.py:1067} INFO - 
+--------------------------------------------------------------------------------
+[2021-06-27 07:16:25,456] {taskinstance.py:1068} INFO - Starting attempt 1 of 2
+[2021-06-27 07:16:25,461] {taskinstance.py:1069} INFO - 
+--------------------------------------------------------------------------------
+[2021-06-27 07:16:25,476] {taskinstance.py:1087} INFO - Executing <Task(PostgresOperator): create_postgresql_schema> on 2021-06-27T07:16:24.179692+00:00
+[2021-06-27 07:16:25,489] {standard_task_runner.py:52} INFO - Started process 5075 to run task
+[2021-06-27 07:16:25,496] {standard_task_runner.py:76} INFO - Running: ['***', 'tasks', 'run', 'postgretomysql', 'create_postgresql_schema', '2021-06-27T07:16:24.179692+00:00', '--job-id', '41', '--pool', 'default_pool', '--raw', '--subdir', 'DAGS_FOLDER/postgresql-collect.py', '--cfg-path', '/tmp/tmptcnqlh9d', '--error-file', '/tmp/tmp4u8o8hbz']
+[2021-06-27 07:16:25,497] {standard_task_runner.py:77} INFO - Job 41: Subtask create_postgresql_schema
+[2021-06-27 07:16:25,584] {logging_mixin.py:104} INFO - Running <TaskInstance: postgretomysql.create_postgresql_schema 2021-06-27T07:16:24.179692+00:00 [running]> on host b69deda3a989
+[2021-06-27 07:16:25,752] {taskinstance.py:1282} INFO - Exporting the following env vars:
+AIRFLOW_CTX_DAG_EMAIL=tech@innospark.com
+AIRFLOW_CTX_DAG_OWNER=***
+AIRFLOW_CTX_DAG_ID=postgretomysql
+AIRFLOW_CTX_TASK_ID=create_postgresql_schema
+AIRFLOW_CTX_EXECUTION_DATE=2021-06-27T07:16:24.179692+00:00
+AIRFLOW_CTX_DAG_RUN_ID=manual__2021-06-27T07:16:24.179692+00:00
+[2021-06-27 07:16:25,754] {postgres.py:70} INFO - Executing: -- Drop tables
+
+DROP TABLE IF EXISTS test.invoice;
+
+DROP TABLE IF EXISTS test.customer;
+
+-- test.customer definition
+
+CREATE TABLE IF NOT EXISTS test.customer (
+	id int4 NOT NULL,
+	customername varchar NULL,
+	address varchar NULL,
+	country varchar NULL,
+	phone varchar NULL,
+	CONSTRAINT customer_pk PRIMARY KEY (id)
+);
+
+-- test.invoice definition
+
+CREATE TABLE IF NOT EXISTS test.invoice (
+	id int4 NOT NULL,
+	idcustomer int4 NULL,
+	orderdate date NULL,
+	subtotal float4 NULL,
+	discount float4 NULL,
+	region varchar NULL,
+	salesperson varchar NULL,
+	CONSTRAINT invoice_pk PRIMARY KEY (id),
+	CONSTRAINT customer_fk FOREIGN KEY (id) REFERENCES test.customer(id)
+);
+[2021-06-27 07:16:25,784] {base.py:78} INFO - Using connection to: id: docker-postgres. Host: 192.168.1.27, Port: 5432, Schema: , Login: postgres, Password: ***, extra: {}
+[2021-06-27 07:16:25,803] {dbapi.py:204} INFO - Running statement: -- Drop tables
+
+DROP TABLE IF EXISTS test.invoice;
+
+DROP TABLE IF EXISTS test.customer;
+
+-- test.customer definition
+
+CREATE TABLE IF NOT EXISTS test.customer (
+	id int4 NOT NULL,
+	customername varchar NULL,
+	address varchar NULL,
+	country varchar NULL,
+	phone varchar NULL,
+	CONSTRAINT customer_pk PRIMARY KEY (id)
+);
+
+-- test.invoice definition
+
+CREATE TABLE IF NOT EXISTS test.invoice (
+	id int4 NOT NULL,
+	idcustomer int4 NULL,
+	orderdate date NULL,
+	subtotal float4 NULL,
+	discount float4 NULL,
+	region varchar NULL,
+	salesperson varchar NULL,
+	CONSTRAINT invoice_pk PRIMARY KEY (id),
+	CONSTRAINT customer_fk FOREIGN KEY (id) REFERENCES test.customer(id)
+);, parameters: None
+[2021-06-27 07:16:25,870] {postgres.py:74} INFO - NOTICE:  table "invoice" does not exist, skipping
+
+[2021-06-27 07:16:25,872] {postgres.py:74} INFO - NOTICE:  table "customer" does not exist, skipping
+
+[2021-06-27 07:16:25,903] {taskinstance.py:1191} INFO - Marking task as SUCCESS. dag_id=postgretomysql, task_id=create_postgresql_schema, execution_date=20210627T071624, start_date=20210627T071625, end_date=20210627T071625
+[2021-06-27 07:16:26,021] {taskinstance.py:1245} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2021-06-27 07:16:26,110] {local_task_job.py:151} INFO - Task exited with return code 0

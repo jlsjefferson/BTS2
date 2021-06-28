@@ -1,0 +1,83 @@
+[2021-06-27 07:26:24,755] {taskinstance.py:876} INFO - Dependencies all met for <TaskInstance: postgretomysql.create_postgresql_schema 2021-06-27T07:26:23.777470+00:00 [queued]>
+[2021-06-27 07:26:24,784] {taskinstance.py:876} INFO - Dependencies all met for <TaskInstance: postgretomysql.create_postgresql_schema 2021-06-27T07:26:23.777470+00:00 [queued]>
+[2021-06-27 07:26:24,785] {taskinstance.py:1067} INFO - 
+--------------------------------------------------------------------------------
+[2021-06-27 07:26:24,786] {taskinstance.py:1068} INFO - Starting attempt 1 of 2
+[2021-06-27 07:26:24,788] {taskinstance.py:1069} INFO - 
+--------------------------------------------------------------------------------
+[2021-06-27 07:26:24,799] {taskinstance.py:1087} INFO - Executing <Task(PostgresOperator): create_postgresql_schema> on 2021-06-27T07:26:23.777470+00:00
+[2021-06-27 07:26:24,813] {standard_task_runner.py:52} INFO - Started process 5617 to run task
+[2021-06-27 07:26:24,821] {standard_task_runner.py:76} INFO - Running: ['***', 'tasks', 'run', 'postgretomysql', 'create_postgresql_schema', '2021-06-27T07:26:23.777470+00:00', '--job-id', '56', '--pool', 'default_pool', '--raw', '--subdir', 'DAGS_FOLDER/postgresql-collect.py', '--cfg-path', '/tmp/tmpnux8ks4h', '--error-file', '/tmp/tmpnlzuj5ax']
+[2021-06-27 07:26:24,823] {standard_task_runner.py:77} INFO - Job 56: Subtask create_postgresql_schema
+[2021-06-27 07:26:24,999] {logging_mixin.py:104} INFO - Running <TaskInstance: postgretomysql.create_postgresql_schema 2021-06-27T07:26:23.777470+00:00 [running]> on host b69deda3a989
+[2021-06-27 07:26:25,186] {taskinstance.py:1282} INFO - Exporting the following env vars:
+AIRFLOW_CTX_DAG_EMAIL=tech@innospark.com
+AIRFLOW_CTX_DAG_OWNER=***
+AIRFLOW_CTX_DAG_ID=postgretomysql
+AIRFLOW_CTX_TASK_ID=create_postgresql_schema
+AIRFLOW_CTX_EXECUTION_DATE=2021-06-27T07:26:23.777470+00:00
+AIRFLOW_CTX_DAG_RUN_ID=manual__2021-06-27T07:26:23.777470+00:00
+[2021-06-27 07:26:25,188] {postgres.py:70} INFO - Executing: -- Drop tables
+
+DROP TABLE IF EXISTS test.invoice;
+
+DROP TABLE IF EXISTS test.customer;
+
+-- test.customer definition
+
+CREATE TABLE IF NOT EXISTS test.customer (
+	id int4 NOT NULL,
+	customername varchar NULL,
+	address varchar NULL,
+	country varchar NULL,
+	phone varchar NULL,
+	CONSTRAINT customer_pk PRIMARY KEY (id)
+);
+
+-- test.invoice definition
+
+CREATE TABLE IF NOT EXISTS test.invoice (
+	id int4 NOT NULL,
+	idcustomer int4 NULL,
+	orderdate date NULL,
+	subtotal float4 NULL,
+	discount float4 NULL,
+	region varchar NULL,
+	salesperson varchar NULL,
+	CONSTRAINT invoice_pk PRIMARY KEY (id),
+	CONSTRAINT customer_fk FOREIGN KEY (id) REFERENCES test.customer(id)
+);
+[2021-06-27 07:26:25,211] {base.py:78} INFO - Using connection to: id: docker-postgres. Host: 192.168.1.27, Port: 5432, Schema: , Login: postgres, Password: ***, extra: {}
+[2021-06-27 07:26:25,227] {dbapi.py:204} INFO - Running statement: -- Drop tables
+
+DROP TABLE IF EXISTS test.invoice;
+
+DROP TABLE IF EXISTS test.customer;
+
+-- test.customer definition
+
+CREATE TABLE IF NOT EXISTS test.customer (
+	id int4 NOT NULL,
+	customername varchar NULL,
+	address varchar NULL,
+	country varchar NULL,
+	phone varchar NULL,
+	CONSTRAINT customer_pk PRIMARY KEY (id)
+);
+
+-- test.invoice definition
+
+CREATE TABLE IF NOT EXISTS test.invoice (
+	id int4 NOT NULL,
+	idcustomer int4 NULL,
+	orderdate date NULL,
+	subtotal float4 NULL,
+	discount float4 NULL,
+	region varchar NULL,
+	salesperson varchar NULL,
+	CONSTRAINT invoice_pk PRIMARY KEY (id),
+	CONSTRAINT customer_fk FOREIGN KEY (id) REFERENCES test.customer(id)
+);, parameters: None
+[2021-06-27 07:26:25,319] {taskinstance.py:1191} INFO - Marking task as SUCCESS. dag_id=postgretomysql, task_id=create_postgresql_schema, execution_date=20210627T072623, start_date=20210627T072624, end_date=20210627T072625
+[2021-06-27 07:26:25,404] {taskinstance.py:1245} INFO - 1 downstream tasks scheduled from follow-on schedule check
+[2021-06-27 07:26:25,448] {local_task_job.py:151} INFO - Task exited with return code 0

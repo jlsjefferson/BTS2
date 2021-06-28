@@ -1,0 +1,110 @@
+[2021-06-27 07:18:05,952] {taskinstance.py:876} INFO - Dependencies all met for <TaskInstance: postgretomysql.recreate_mysql_schema 2021-06-27T07:16:24.179692+00:00 [queued]>
+[2021-06-27 07:18:05,980] {taskinstance.py:876} INFO - Dependencies all met for <TaskInstance: postgretomysql.recreate_mysql_schema 2021-06-27T07:16:24.179692+00:00 [queued]>
+[2021-06-27 07:18:05,981] {taskinstance.py:1067} INFO - 
+--------------------------------------------------------------------------------
+[2021-06-27 07:18:05,981] {taskinstance.py:1068} INFO - Starting attempt 2 of 2
+[2021-06-27 07:18:05,984] {taskinstance.py:1069} INFO - 
+--------------------------------------------------------------------------------
+[2021-06-27 07:18:05,999] {taskinstance.py:1087} INFO - Executing <Task(MySqlOperator): recreate_mysql_schema> on 2021-06-27T07:16:24.179692+00:00
+[2021-06-27 07:18:06,008] {standard_task_runner.py:52} INFO - Started process 5157 to run task
+[2021-06-27 07:18:06,016] {standard_task_runner.py:76} INFO - Running: ['***', 'tasks', 'run', 'postgretomysql', 'recreate_mysql_schema', '2021-06-27T07:16:24.179692+00:00', '--job-id', '47', '--pool', 'default_pool', '--raw', '--subdir', 'DAGS_FOLDER/postgresql-collect.py', '--cfg-path', '/tmp/tmpph055fmz', '--error-file', '/tmp/tmp_jua9o_o']
+[2021-06-27 07:18:06,021] {standard_task_runner.py:77} INFO - Job 47: Subtask recreate_mysql_schema
+[2021-06-27 07:18:06,086] {logging_mixin.py:104} INFO - Running <TaskInstance: postgretomysql.recreate_mysql_schema 2021-06-27T07:16:24.179692+00:00 [running]> on host b69deda3a989
+[2021-06-27 07:18:06,152] {taskinstance.py:1282} INFO - Exporting the following env vars:
+AIRFLOW_CTX_DAG_EMAIL=tech@innospark.com
+AIRFLOW_CTX_DAG_OWNER=***
+AIRFLOW_CTX_DAG_ID=postgretomysql
+AIRFLOW_CTX_TASK_ID=recreate_mysql_schema
+AIRFLOW_CTX_EXECUTION_DATE=2021-06-27T07:16:24.179692+00:00
+AIRFLOW_CTX_DAG_RUN_ID=manual__2021-06-27T07:16:24.179692+00:00
+[2021-06-27 07:18:06,154] {mysql.py:72} INFO - Executing: -- Drop tables
+
+
+DROP TABLE IF EXISTS test.invoice;
+
+DROP TABLE IF EXISTS test.customer;
+
+SET GLOBAL local_infile=1;
+-- test.customer definition
+
+CREATE TABLE IF NOT EXISTS `test`.`customer` (
+  `id` int NOT NULL,
+  `customerName` varchar(100) DEFAULT NULL,
+  `address` varchar(100) DEFAULT NULL,
+  `country` varchar(100) DEFAULT NULL,
+  `phone` varchar(100) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+
+-- test.invoice definition
+
+CREATE TABLE IF NOT EXISTS `test`.`invoice` (
+  `id` varchar(100) NOT NULL,
+  `idcustomer` int DEFAULT NULL,
+  `orderdate` date DEFAULT NULL,
+  `subtotal` float DEFAULT NULL,
+  `discount` float DEFAULT NULL,
+  `region` varchar(100) DEFAULT NULL,
+  `salesperson` varchar(100) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `invoice_FK` (`idcustomer`),
+  CONSTRAINT `invoice_FK` FOREIGN KEY (`idcustomer`) REFERENCES `customer` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+[2021-06-27 07:18:06,168] {base.py:78} INFO - Using connection to: id: docker-mysql. Host: 192.168.1.27, Port: 3306, Schema: , Login: root, Password: ***, extra: {}
+[2021-06-27 07:18:06,199] {dbapi.py:204} INFO - Running statement: -- Drop tables
+
+
+DROP TABLE IF EXISTS test.invoice;
+
+DROP TABLE IF EXISTS test.customer;
+
+SET GLOBAL local_infile=1;
+-- test.customer definition
+
+CREATE TABLE IF NOT EXISTS `test`.`customer` (
+  `id` int NOT NULL,
+  `customerName` varchar(100) DEFAULT NULL,
+  `address` varchar(100) DEFAULT NULL,
+  `country` varchar(100) DEFAULT NULL,
+  `phone` varchar(100) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+
+-- test.invoice definition
+
+CREATE TABLE IF NOT EXISTS `test`.`invoice` (
+  `id` varchar(100) NOT NULL,
+  `idcustomer` int DEFAULT NULL,
+  `orderdate` date DEFAULT NULL,
+  `subtotal` float DEFAULT NULL,
+  `discount` float DEFAULT NULL,
+  `region` varchar(100) DEFAULT NULL,
+  `salesperson` varchar(100) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `invoice_FK` (`idcustomer`),
+  CONSTRAINT `invoice_FK` FOREIGN KEY (`idcustomer`) REFERENCES `customer` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;, parameters: None
+[2021-06-27 07:18:06,208] {dbapi.py:212} INFO - Rows affected: 0
+[2021-06-27 07:18:06,215] {taskinstance.py:1481} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.6/site-packages/airflow/models/taskinstance.py", line 1137, in _run_raw_task
+    self._prepare_and_execute_task_with_callbacks(context, task)
+  File "/home/airflow/.local/lib/python3.6/site-packages/airflow/models/taskinstance.py", line 1311, in _prepare_and_execute_task_with_callbacks
+    result = self._execute_task(context, task_copy)
+  File "/home/airflow/.local/lib/python3.6/site-packages/airflow/models/taskinstance.py", line 1341, in _execute_task
+    result = task_copy.execute(context=context)
+  File "/home/airflow/.local/lib/python3.6/site-packages/airflow/providers/mysql/operators/mysql.py", line 74, in execute
+    hook.run(self.sql, autocommit=self.autocommit, parameters=self.parameters)
+  File "/home/airflow/.local/lib/python3.6/site-packages/airflow/hooks/dbapi.py", line 187, in run
+    results.append(result)
+  File "/usr/local/lib/python3.6/contextlib.py", line 185, in __exit__
+    self.thing.close()
+  File "/home/airflow/.local/lib/python3.6/site-packages/MySQLdb/cursors.py", line 83, in close
+    while self.nextset():
+  File "/home/airflow/.local/lib/python3.6/site-packages/MySQLdb/cursors.py", line 137, in nextset
+    nr = db.next_result()
+MySQLdb._exceptions.OperationalError: (1049, "Unknown database 'test'")
+[2021-06-27 07:18:06,219] {taskinstance.py:1531} INFO - Marking task as FAILED. dag_id=postgretomysql, task_id=recreate_mysql_schema, execution_date=20210627T071624, start_date=20210627T071805, end_date=20210627T071806
+[2021-06-27 07:18:06,276] {local_task_job.py:151} INFO - Task exited with return code 1

@@ -1,0 +1,24 @@
+[2021-06-27 18:25:46,148] {taskinstance.py:876} INFO - Dependencies all met for <TaskInstance: postgretomysql.import_mysql_invoice 2021-06-25T00:00:00+00:00 [queued]>
+[2021-06-27 18:25:46,161] {taskinstance.py:876} INFO - Dependencies all met for <TaskInstance: postgretomysql.import_mysql_invoice 2021-06-25T00:00:00+00:00 [queued]>
+[2021-06-27 18:25:46,162] {taskinstance.py:1067} INFO - 
+--------------------------------------------------------------------------------
+[2021-06-27 18:25:46,163] {taskinstance.py:1068} INFO - Starting attempt 1 of 2
+[2021-06-27 18:25:46,166] {taskinstance.py:1069} INFO - 
+--------------------------------------------------------------------------------
+[2021-06-27 18:25:46,183] {taskinstance.py:1087} INFO - Executing <Task(PythonOperator): import_mysql_invoice> on 2021-06-25T00:00:00+00:00
+[2021-06-27 18:25:46,191] {standard_task_runner.py:52} INFO - Started process 8414 to run task
+[2021-06-27 18:25:46,195] {standard_task_runner.py:76} INFO - Running: ['***', 'tasks', 'run', 'postgretomysql', 'import_mysql_invoice', '2021-06-25T00:00:00+00:00', '--job-id', '99', '--pool', 'default_pool', '--raw', '--subdir', 'DAGS_FOLDER/postgresmysql.py', '--cfg-path', '/tmp/tmpehz3smiz', '--error-file', '/tmp/tmpauvvxg6t']
+[2021-06-27 18:25:46,196] {standard_task_runner.py:77} INFO - Job 99: Subtask import_mysql_invoice
+[2021-06-27 18:25:46,246] {logging_mixin.py:104} INFO - Running <TaskInstance: postgretomysql.import_mysql_invoice 2021-06-25T00:00:00+00:00 [running]> on host b69deda3a989
+[2021-06-27 18:25:46,310] {taskinstance.py:1282} INFO - Exporting the following env vars:
+AIRFLOW_CTX_DAG_EMAIL=tech@innospark.com
+AIRFLOW_CTX_DAG_OWNER=***
+AIRFLOW_CTX_DAG_ID=postgretomysql
+AIRFLOW_CTX_TASK_ID=import_mysql_invoice
+AIRFLOW_CTX_EXECUTION_DATE=2021-06-25T00:00:00+00:00
+AIRFLOW_CTX_DAG_RUN_ID=scheduled__2021-06-25T00:00:00+00:00
+[2021-06-27 18:25:46,327] {base.py:78} INFO - Using connection to: id: docker-mysql. Host: 172.27.240.1, Port: 3306, Schema: , Login: root, Password: ***, extra: {'charset': 'utf8', 'local_infile': True}
+[2021-06-27 18:25:46,385] {python.py:151} INFO - Done. Returned value was: None
+[2021-06-27 18:25:46,398] {taskinstance.py:1191} INFO - Marking task as SUCCESS. dag_id=postgretomysql, task_id=import_mysql_invoice, execution_date=20210625T000000, start_date=20210627T182546, end_date=20210627T182546
+[2021-06-27 18:25:46,442] {taskinstance.py:1245} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2021-06-27 18:25:46,488] {local_task_job.py:151} INFO - Task exited with return code 0

@@ -1,0 +1,51 @@
+[2021-06-11 18:16:17,036] {taskinstance.py:876} INFO - Dependencies all met for <TaskInstance: postgres_operator_dag.populate_pet_table 2020-02-02T00:00:00+00:00 [queued]>
+[2021-06-11 18:16:17,072] {taskinstance.py:876} INFO - Dependencies all met for <TaskInstance: postgres_operator_dag.populate_pet_table 2020-02-02T00:00:00+00:00 [queued]>
+[2021-06-11 18:16:17,073] {taskinstance.py:1067} INFO - 
+--------------------------------------------------------------------------------
+[2021-06-11 18:16:17,074] {taskinstance.py:1068} INFO - Starting attempt 1 of 1
+[2021-06-11 18:16:17,081] {taskinstance.py:1069} INFO - 
+--------------------------------------------------------------------------------
+[2021-06-11 18:16:17,100] {taskinstance.py:1087} INFO - Executing <Task(PostgresOperator): populate_pet_table> on 2020-02-02T00:00:00+00:00
+[2021-06-11 18:16:17,117] {standard_task_runner.py:52} INFO - Started process 4174 to run task
+[2021-06-11 18:16:17,135] {standard_task_runner.py:76} INFO - Running: ['***', 'tasks', 'run', 'postgres_operator_dag', 'populate_pet_table', '2020-02-02T00:00:00+00:00', '--job-id', '7', '--pool', 'default_pool', '--raw', '--subdir', 'DAGS_FOLDER/example_postgres.py', '--cfg-path', '/tmp/tmpu3ms0ua9', '--error-file', '/tmp/tmpmut6s1ip']
+[2021-06-11 18:16:17,146] {standard_task_runner.py:77} INFO - Job 7: Subtask populate_pet_table
+[2021-06-11 18:16:17,256] {logging_mixin.py:104} INFO - Running <TaskInstance: postgres_operator_dag.populate_pet_table 2020-02-02T00:00:00+00:00 [running]> on host cd242b243f35
+[2021-06-11 18:16:17,493] {taskinstance.py:1282} INFO - Exporting the following env vars:
+AIRFLOW_CTX_DAG_OWNER=***
+AIRFLOW_CTX_DAG_ID=postgres_operator_dag
+AIRFLOW_CTX_TASK_ID=populate_pet_table
+AIRFLOW_CTX_EXECUTION_DATE=2020-02-02T00:00:00+00:00
+AIRFLOW_CTX_DAG_RUN_ID=scheduled__2020-02-02T00:00:00+00:00
+[2021-06-11 18:16:17,496] {postgres.py:70} INFO - Executing: 
+            INSERT INTO pet VALUES ( 'Max', 'Dog', '2018-07-05', 'Jane');
+            INSERT INTO pet VALUES ( 'Susie', 'Cat', '2019-05-01', 'Phil');
+            INSERT INTO pet VALUES ( 'Lester', 'Hamster', '2020-06-23', 'Lily');
+            INSERT INTO pet VALUES ( 'Quincy', 'Parrot', '2013-08-11', 'Anne');
+            
+[2021-06-11 18:16:17,533] {base.py:78} INFO - Using connection to: id: docker-postgres. Host: 192.168.1.27, Port: 5432, Schema: , Login: postgres, Password: ***, extra: {}
+[2021-06-11 18:16:17,556] {dbapi.py:204} INFO - Running statement: 
+            INSERT INTO pet VALUES ( 'Max', 'Dog', '2018-07-05', 'Jane');
+            INSERT INTO pet VALUES ( 'Susie', 'Cat', '2019-05-01', 'Phil');
+            INSERT INTO pet VALUES ( 'Lester', 'Hamster', '2020-06-23', 'Lily');
+            INSERT INTO pet VALUES ( 'Quincy', 'Parrot', '2013-08-11', 'Anne');
+            , parameters: None
+[2021-06-11 18:16:17,567] {taskinstance.py:1481} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.6/site-packages/airflow/models/taskinstance.py", line 1137, in _run_raw_task
+    self._prepare_and_execute_task_with_callbacks(context, task)
+  File "/home/airflow/.local/lib/python3.6/site-packages/airflow/models/taskinstance.py", line 1311, in _prepare_and_execute_task_with_callbacks
+    result = self._execute_task(context, task_copy)
+  File "/home/airflow/.local/lib/python3.6/site-packages/airflow/models/taskinstance.py", line 1341, in _execute_task
+    result = task_copy.execute(context=context)
+  File "/home/airflow/.local/lib/python3.6/site-packages/airflow/providers/postgres/operators/postgres.py", line 72, in execute
+    self.hook.run(self.sql, self.autocommit, parameters=self.parameters)
+  File "/home/airflow/.local/lib/python3.6/site-packages/airflow/hooks/dbapi.py", line 184, in run
+    self._run_command(cur, sql_statement, parameters)
+  File "/home/airflow/.local/lib/python3.6/site-packages/airflow/hooks/dbapi.py", line 208, in _run_command
+    cur.execute(sql_statement)
+psycopg2.errors.InvalidTextRepresentation: invalid input syntax for type integer: "Max"
+LINE 2:             INSERT INTO pet VALUES ( 'Max', 'Dog', '2018-07-...
+                                             ^
+
+[2021-06-11 18:16:17,576] {taskinstance.py:1531} INFO - Marking task as FAILED. dag_id=postgres_operator_dag, task_id=populate_pet_table, execution_date=20200202T000000, start_date=20210611T181617, end_date=20210611T181617
+[2021-06-11 18:16:17,684] {local_task_job.py:151} INFO - Task exited with return code 1

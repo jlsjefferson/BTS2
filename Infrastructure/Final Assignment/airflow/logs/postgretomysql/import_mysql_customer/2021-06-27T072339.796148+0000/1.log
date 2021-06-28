@@ -1,0 +1,45 @@
+[2021-06-27 07:23:53,635] {taskinstance.py:876} INFO - Dependencies all met for <TaskInstance: postgretomysql.import_mysql_customer 2021-06-27T07:23:39.796148+00:00 [queued]>
+[2021-06-27 07:23:53,651] {taskinstance.py:876} INFO - Dependencies all met for <TaskInstance: postgretomysql.import_mysql_customer 2021-06-27T07:23:39.796148+00:00 [queued]>
+[2021-06-27 07:23:53,652] {taskinstance.py:1067} INFO - 
+--------------------------------------------------------------------------------
+[2021-06-27 07:23:53,653] {taskinstance.py:1068} INFO - Starting attempt 1 of 2
+[2021-06-27 07:23:53,655] {taskinstance.py:1069} INFO - 
+--------------------------------------------------------------------------------
+[2021-06-27 07:23:53,664] {taskinstance.py:1087} INFO - Executing <Task(PythonOperator): import_mysql_customer> on 2021-06-27T07:23:39.796148+00:00
+[2021-06-27 07:23:53,670] {standard_task_runner.py:52} INFO - Started process 5481 to run task
+[2021-06-27 07:23:53,675] {standard_task_runner.py:76} INFO - Running: ['***', 'tasks', 'run', 'postgretomysql', 'import_mysql_customer', '2021-06-27T07:23:39.796148+00:00', '--job-id', '54', '--pool', 'default_pool', '--raw', '--subdir', 'DAGS_FOLDER/postgresql-collect.py', '--cfg-path', '/tmp/tmplvq6xtzs', '--error-file', '/tmp/tmpfyfpjtz4']
+[2021-06-27 07:23:53,675] {standard_task_runner.py:77} INFO - Job 54: Subtask import_mysql_customer
+[2021-06-27 07:23:53,720] {logging_mixin.py:104} INFO - Running <TaskInstance: postgretomysql.import_mysql_customer 2021-06-27T07:23:39.796148+00:00 [running]> on host b69deda3a989
+[2021-06-27 07:23:53,774] {taskinstance.py:1282} INFO - Exporting the following env vars:
+AIRFLOW_CTX_DAG_EMAIL=tech@innospark.com
+AIRFLOW_CTX_DAG_OWNER=***
+AIRFLOW_CTX_DAG_ID=postgretomysql
+AIRFLOW_CTX_TASK_ID=import_mysql_customer
+AIRFLOW_CTX_EXECUTION_DATE=2021-06-27T07:23:39.796148+00:00
+AIRFLOW_CTX_DAG_RUN_ID=manual__2021-06-27T07:23:39.796148+00:00
+[2021-06-27 07:23:53,787] {base.py:78} INFO - Using connection to: id: docker-mysql. Host: 192.168.1.27, Port: 3306, Schema: , Login: root, Password: ***, extra: {}
+[2021-06-27 07:23:53,815] {taskinstance.py:1481} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.6/site-packages/airflow/models/taskinstance.py", line 1137, in _run_raw_task
+    self._prepare_and_execute_task_with_callbacks(context, task)
+  File "/home/airflow/.local/lib/python3.6/site-packages/airflow/models/taskinstance.py", line 1311, in _prepare_and_execute_task_with_callbacks
+    result = self._execute_task(context, task_copy)
+  File "/home/airflow/.local/lib/python3.6/site-packages/airflow/models/taskinstance.py", line 1341, in _execute_task
+    result = task_copy.execute(context=context)
+  File "/home/airflow/.local/lib/python3.6/site-packages/airflow/operators/python.py", line 150, in execute
+    return_value = self.execute_callable()
+  File "/home/airflow/.local/lib/python3.6/site-packages/airflow/operators/python.py", line 161, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+  File "/opt/airflow/dags/postgresql-collect.py", line 121, in mysql_bulk_load_sql
+    conn.bulk_load(table = kwargs['table_name'], tmp_file = exp_file_name)
+  File "/home/airflow/.local/lib/python3.6/site-packages/airflow/providers/mysql/hooks/mysql.py", line 194, in bulk_load
+    """
+  File "/home/airflow/.local/lib/python3.6/site-packages/MySQLdb/cursors.py", line 206, in execute
+    res = self._query(query)
+  File "/home/airflow/.local/lib/python3.6/site-packages/MySQLdb/cursors.py", line 319, in _query
+    db.query(q)
+  File "/home/airflow/.local/lib/python3.6/site-packages/MySQLdb/connections.py", line 259, in query
+    _mysql.connection.query(self, query)
+MySQLdb._exceptions.OperationalError: (2068, 'LOAD DATA LOCAL INFILE file request rejected due to restrictions on access.')
+[2021-06-27 07:23:53,821] {taskinstance.py:1531} INFO - Marking task as UP_FOR_RETRY. dag_id=postgretomysql, task_id=import_mysql_customer, execution_date=20210627T072339, start_date=20210627T072353, end_date=20210627T072353
+[2021-06-27 07:23:53,886] {local_task_job.py:151} INFO - Task exited with return code 1

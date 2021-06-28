@@ -1,0 +1,39 @@
+[2021-06-27 20:10:40,094] {taskinstance.py:876} INFO - Dependencies all met for <TaskInstance: postgretomysql.load_transform_invoice 2021-06-27T20:09:27.715568+00:00 [queued]>
+[2021-06-27 20:10:40,136] {taskinstance.py:876} INFO - Dependencies all met for <TaskInstance: postgretomysql.load_transform_invoice 2021-06-27T20:09:27.715568+00:00 [queued]>
+[2021-06-27 20:10:40,137] {taskinstance.py:1067} INFO - 
+--------------------------------------------------------------------------------
+[2021-06-27 20:10:40,137] {taskinstance.py:1068} INFO - Starting attempt 2 of 2
+[2021-06-27 20:10:40,152] {taskinstance.py:1069} INFO - 
+--------------------------------------------------------------------------------
+[2021-06-27 20:10:40,186] {taskinstance.py:1087} INFO - Executing <Task(PythonOperator): load_transform_invoice> on 2021-06-27T20:09:27.715568+00:00
+[2021-06-27 20:10:40,202] {standard_task_runner.py:52} INFO - Started process 2115 to run task
+[2021-06-27 20:10:40,226] {standard_task_runner.py:76} INFO - Running: ['***', 'tasks', 'run', 'postgretomysql', 'load_transform_invoice', '2021-06-27T20:09:27.715568+00:00', '--job-id', '110', '--pool', 'default_pool', '--raw', '--subdir', 'DAGS_FOLDER/postgresmysql.py', '--cfg-path', '/tmp/tmp7q68zyb8', '--error-file', '/tmp/tmph246b0qa']
+[2021-06-27 20:10:40,231] {standard_task_runner.py:77} INFO - Job 110: Subtask load_transform_invoice
+[2021-06-27 20:10:40,346] {logging_mixin.py:104} INFO - Running <TaskInstance: postgretomysql.load_transform_invoice 2021-06-27T20:09:27.715568+00:00 [running]> on host b69deda3a989
+[2021-06-27 20:10:40,478] {taskinstance.py:1282} INFO - Exporting the following env vars:
+AIRFLOW_CTX_DAG_EMAIL=tech@innospark.com
+AIRFLOW_CTX_DAG_OWNER=***
+AIRFLOW_CTX_DAG_ID=postgretomysql
+AIRFLOW_CTX_TASK_ID=load_transform_invoice
+AIRFLOW_CTX_EXECUTION_DATE=2021-06-27T20:09:27.715568+00:00
+AIRFLOW_CTX_DAG_RUN_ID=manual__2021-06-27T20:09:27.715568+00:00
+[2021-06-27 20:10:40,500] {base.py:78} INFO - Using connection to: id: docker-postgres. Host: 172.27.240.1, Port: 5432, Schema: , Login: postgres, Password: ***, extra: {}
+[2021-06-27 20:10:40,546] {taskinstance.py:1481} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.6/site-packages/airflow/models/taskinstance.py", line 1137, in _run_raw_task
+    self._prepare_and_execute_task_with_callbacks(context, task)
+  File "/home/airflow/.local/lib/python3.6/site-packages/airflow/models/taskinstance.py", line 1311, in _prepare_and_execute_task_with_callbacks
+    result = self._execute_task(context, task_copy)
+  File "/home/airflow/.local/lib/python3.6/site-packages/airflow/models/taskinstance.py", line 1341, in _execute_task
+    result = task_copy.execute(context=context)
+  File "/home/airflow/.local/lib/python3.6/site-packages/airflow/operators/python.py", line 150, in execute
+    return_value = self.execute_callable()
+  File "/home/airflow/.local/lib/python3.6/site-packages/airflow/operators/python.py", line 161, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+  File "/opt/airflow/dags/postgresmysql.py", line 32, in load_data_from_csv
+    pg_cur.copy_expert(sql_statement, f)
+psycopg2.errors.BadCopyFileFormat: missing data for column "discount"
+CONTEXT:  COPY invoice, line 2: "1	1	2019-01-28	5003.50"
+
+[2021-06-27 20:10:40,551] {taskinstance.py:1531} INFO - Marking task as FAILED. dag_id=postgretomysql, task_id=load_transform_invoice, execution_date=20210627T200927, start_date=20210627T201040, end_date=20210627T201040
+[2021-06-27 20:10:40,603] {local_task_job.py:151} INFO - Task exited with return code 1

@@ -1,0 +1,25 @@
+[2021-06-27 06:49:46,971] {taskinstance.py:876} INFO - Dependencies all met for <TaskInstance: example_mysql.drop_table_mysql 2021-06-27T06:49:43.622323+00:00 [queued]>
+[2021-06-27 06:49:47,040] {taskinstance.py:876} INFO - Dependencies all met for <TaskInstance: example_mysql.drop_table_mysql 2021-06-27T06:49:43.622323+00:00 [queued]>
+[2021-06-27 06:49:47,041] {taskinstance.py:1067} INFO - 
+--------------------------------------------------------------------------------
+[2021-06-27 06:49:47,043] {taskinstance.py:1068} INFO - Starting attempt 1 of 1
+[2021-06-27 06:49:47,055] {taskinstance.py:1069} INFO - 
+--------------------------------------------------------------------------------
+[2021-06-27 06:49:47,090] {taskinstance.py:1087} INFO - Executing <Task(MySqlOperator): drop_table_mysql> on 2021-06-27T06:49:43.622323+00:00
+[2021-06-27 06:49:47,110] {standard_task_runner.py:52} INFO - Started process 3820 to run task
+[2021-06-27 06:49:47,134] {standard_task_runner.py:76} INFO - Running: ['***', 'tasks', 'run', 'example_mysql', 'drop_table_mysql', '2021-06-27T06:49:43.622323+00:00', '--job-id', '27', '--pool', 'default_pool', '--raw', '--subdir', 'DAGS_FOLDER/example_mysql.py', '--cfg-path', '/tmp/tmpeqa0dbcc', '--error-file', '/tmp/tmpg4_uxikz']
+[2021-06-27 06:49:47,136] {standard_task_runner.py:77} INFO - Job 27: Subtask drop_table_mysql
+[2021-06-27 06:49:47,261] {logging_mixin.py:104} INFO - Running <TaskInstance: example_mysql.drop_table_mysql 2021-06-27T06:49:43.622323+00:00 [running]> on host b69deda3a989
+[2021-06-27 06:49:47,392] {taskinstance.py:1282} INFO - Exporting the following env vars:
+AIRFLOW_CTX_DAG_OWNER=***
+AIRFLOW_CTX_DAG_ID=example_mysql
+AIRFLOW_CTX_TASK_ID=drop_table_mysql
+AIRFLOW_CTX_EXECUTION_DATE=2021-06-27T06:49:43.622323+00:00
+AIRFLOW_CTX_DAG_RUN_ID=manual__2021-06-27T06:49:43.622323+00:00
+[2021-06-27 06:49:47,397] {mysql.py:72} INFO - Executing: DROP TABLE IF EXISTS Sys.Student;
+[2021-06-27 06:49:47,423] {base.py:78} INFO - Using connection to: id: docker-mysql. Host: 192.168.1.27, Port: 3306, Schema: , Login: root, Password: ***, extra: {}
+[2021-06-27 06:49:47,501] {dbapi.py:204} INFO - Running statement: DROP TABLE IF EXISTS Sys.Student;, parameters: None
+[2021-06-27 06:49:47,508] {dbapi.py:212} INFO - Rows affected: 0
+[2021-06-27 06:49:47,533] {taskinstance.py:1191} INFO - Marking task as SUCCESS. dag_id=example_mysql, task_id=drop_table_mysql, execution_date=20210627T064943, start_date=20210627T064946, end_date=20210627T064947
+[2021-06-27 06:49:47,606] {taskinstance.py:1245} INFO - 1 downstream tasks scheduled from follow-on schedule check
+[2021-06-27 06:49:47,671] {local_task_job.py:151} INFO - Task exited with return code 0

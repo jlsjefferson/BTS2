@@ -1,0 +1,50 @@
+[2021-06-11 18:23:33,112] {taskinstance.py:876} INFO - Dependencies all met for <TaskInstance: postgres_operator_dag.get_birth_date 2021-06-11T18:23:27.772431+00:00 [queued]>
+[2021-06-11 18:23:33,131] {taskinstance.py:876} INFO - Dependencies all met for <TaskInstance: postgres_operator_dag.get_birth_date 2021-06-11T18:23:27.772431+00:00 [queued]>
+[2021-06-11 18:23:33,132] {taskinstance.py:1067} INFO - 
+--------------------------------------------------------------------------------
+[2021-06-11 18:23:33,132] {taskinstance.py:1068} INFO - Starting attempt 1 of 1
+[2021-06-11 18:23:33,135] {taskinstance.py:1069} INFO - 
+--------------------------------------------------------------------------------
+[2021-06-11 18:23:33,144] {taskinstance.py:1087} INFO - Executing <Task(PostgresOperator): get_birth_date> on 2021-06-11T18:23:27.772431+00:00
+[2021-06-11 18:23:33,152] {standard_task_runner.py:52} INFO - Started process 4577 to run task
+[2021-06-11 18:23:33,157] {standard_task_runner.py:76} INFO - Running: ['***', 'tasks', 'run', 'postgres_operator_dag', 'get_birth_date', '2021-06-11T18:23:27.772431+00:00', '--job-id', '12', '--pool', 'default_pool', '--raw', '--subdir', 'DAGS_FOLDER/example_postgres.py', '--cfg-path', '/tmp/tmp9_nmy28w', '--error-file', '/tmp/tmpnjy43jc2']
+[2021-06-11 18:23:33,158] {standard_task_runner.py:77} INFO - Job 12: Subtask get_birth_date
+[2021-06-11 18:23:33,203] {logging_mixin.py:104} INFO - Running <TaskInstance: postgres_operator_dag.get_birth_date 2021-06-11T18:23:27.772431+00:00 [running]> on host cd242b243f35
+[2021-06-11 18:23:33,255] {taskinstance.py:1282} INFO - Exporting the following env vars:
+AIRFLOW_CTX_DAG_OWNER=***
+AIRFLOW_CTX_DAG_ID=postgres_operator_dag
+AIRFLOW_CTX_TASK_ID=get_birth_date
+AIRFLOW_CTX_EXECUTION_DATE=2021-06-11T18:23:27.772431+00:00
+AIRFLOW_CTX_DAG_RUN_ID=manual__2021-06-11T18:23:27.772431+00:00
+[2021-06-11 18:23:33,256] {postgres.py:70} INFO - Executing: 
+            SELECT * FROM pet
+            WHERE birth_date
+            BETWEEN SYMMETRIC 2020-01-01 AND 2020-12-31;
+            
+[2021-06-11 18:23:33,266] {base.py:78} INFO - Using connection to: id: docker-postgres. Host: 192.168.1.27, Port: 5432, Schema: , Login: postgres, Password: ***, extra: {}
+[2021-06-11 18:23:33,279] {dbapi.py:204} INFO - Running statement: 
+            SELECT * FROM pet
+            WHERE birth_date
+            BETWEEN SYMMETRIC 2020-01-01 AND 2020-12-31;
+            , parameters: None
+[2021-06-11 18:23:33,293] {taskinstance.py:1481} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.6/site-packages/airflow/models/taskinstance.py", line 1137, in _run_raw_task
+    self._prepare_and_execute_task_with_callbacks(context, task)
+  File "/home/airflow/.local/lib/python3.6/site-packages/airflow/models/taskinstance.py", line 1311, in _prepare_and_execute_task_with_callbacks
+    result = self._execute_task(context, task_copy)
+  File "/home/airflow/.local/lib/python3.6/site-packages/airflow/models/taskinstance.py", line 1341, in _execute_task
+    result = task_copy.execute(context=context)
+  File "/home/airflow/.local/lib/python3.6/site-packages/airflow/providers/postgres/operators/postgres.py", line 72, in execute
+    self.hook.run(self.sql, self.autocommit, parameters=self.parameters)
+  File "/home/airflow/.local/lib/python3.6/site-packages/airflow/hooks/dbapi.py", line 184, in run
+    self._run_command(cur, sql_statement, parameters)
+  File "/home/airflow/.local/lib/python3.6/site-packages/airflow/hooks/dbapi.py", line 208, in _run_command
+    cur.execute(sql_statement)
+psycopg2.errors.UndefinedFunction: operator does not exist: date >= integer
+LINE 4:             BETWEEN SYMMETRIC 2020-01-01 AND 2020-12-31;
+                    ^
+HINT:  No operator matches the given name and argument types. You might need to add explicit type casts.
+
+[2021-06-11 18:23:33,298] {taskinstance.py:1531} INFO - Marking task as FAILED. dag_id=postgres_operator_dag, task_id=get_birth_date, execution_date=20210611T182327, start_date=20210611T182333, end_date=20210611T182333
+[2021-06-11 18:23:33,333] {local_task_job.py:151} INFO - Task exited with return code 1

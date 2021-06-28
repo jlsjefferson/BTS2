@@ -1,0 +1,24 @@
+[2021-06-27 07:26:26,217] {taskinstance.py:876} INFO - Dependencies all met for <TaskInstance: postgretomysql.load_transform_customer 2021-06-27T07:26:23.777470+00:00 [queued]>
+[2021-06-27 07:26:26,260] {taskinstance.py:876} INFO - Dependencies all met for <TaskInstance: postgretomysql.load_transform_customer 2021-06-27T07:26:23.777470+00:00 [queued]>
+[2021-06-27 07:26:26,261] {taskinstance.py:1067} INFO - 
+--------------------------------------------------------------------------------
+[2021-06-27 07:26:26,262] {taskinstance.py:1068} INFO - Starting attempt 1 of 2
+[2021-06-27 07:26:26,265] {taskinstance.py:1069} INFO - 
+--------------------------------------------------------------------------------
+[2021-06-27 07:26:26,283] {taskinstance.py:1087} INFO - Executing <Task(PythonOperator): load_transform_customer> on 2021-06-27T07:26:23.777470+00:00
+[2021-06-27 07:26:26,293] {standard_task_runner.py:52} INFO - Started process 5619 to run task
+[2021-06-27 07:26:26,302] {standard_task_runner.py:76} INFO - Running: ['***', 'tasks', 'run', 'postgretomysql', 'load_transform_customer', '2021-06-27T07:26:23.777470+00:00', '--job-id', '57', '--pool', 'default_pool', '--raw', '--subdir', 'DAGS_FOLDER/postgresql-collect.py', '--cfg-path', '/tmp/tmpwv0342sv', '--error-file', '/tmp/tmp61qtdndx']
+[2021-06-27 07:26:26,303] {standard_task_runner.py:77} INFO - Job 57: Subtask load_transform_customer
+[2021-06-27 07:26:26,375] {logging_mixin.py:104} INFO - Running <TaskInstance: postgretomysql.load_transform_customer 2021-06-27T07:26:23.777470+00:00 [running]> on host b69deda3a989
+[2021-06-27 07:26:26,468] {taskinstance.py:1282} INFO - Exporting the following env vars:
+AIRFLOW_CTX_DAG_EMAIL=tech@innospark.com
+AIRFLOW_CTX_DAG_OWNER=***
+AIRFLOW_CTX_DAG_ID=postgretomysql
+AIRFLOW_CTX_TASK_ID=load_transform_customer
+AIRFLOW_CTX_EXECUTION_DATE=2021-06-27T07:26:23.777470+00:00
+AIRFLOW_CTX_DAG_RUN_ID=manual__2021-06-27T07:26:23.777470+00:00
+[2021-06-27 07:26:26,483] {base.py:78} INFO - Using connection to: id: docker-postgres. Host: 192.168.1.27, Port: 5432, Schema: , Login: postgres, Password: ***, extra: {}
+[2021-06-27 07:26:26,510] {python.py:151} INFO - Done. Returned value was: None
+[2021-06-27 07:26:26,523] {taskinstance.py:1191} INFO - Marking task as SUCCESS. dag_id=postgretomysql, task_id=load_transform_customer, execution_date=20210627T072623, start_date=20210627T072626, end_date=20210627T072626
+[2021-06-27 07:26:26,561] {taskinstance.py:1245} INFO - 1 downstream tasks scheduled from follow-on schedule check
+[2021-06-27 07:26:26,589] {local_task_job.py:151} INFO - Task exited with return code 0
