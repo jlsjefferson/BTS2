@@ -1,0 +1,23 @@
+#Create a base image.
+FROM continuumio/miniconda3
+
+#Set work directory
+WORKDIR /usr/src/flask_app
+
+# Create the environment:
+COPY InnoSpark-docker.yml .
+RUN conda env create -f InnoSpark-docker.yml
+
+# Make RUN commands use the new environment:
+SHELL ["conda", "run", "-n", "InnoSpark-docker", "/bin/bash", "-c"]
+#RUN echo "InnoSpark-docker installed"
+COPY . .
+
+
+# Make sure the environment is activated:
+#RUN echo "Make sure flask is installed:"
+#RUN python -c "import flask"
+
+# The code to run when container is started:
+#COPY run.py .
+#ENTRYPOINT ["conda", "run", "--no-capture-output", "-n", "myenv", "python", "run.py"]
